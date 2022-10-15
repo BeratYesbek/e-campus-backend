@@ -10,16 +10,16 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student extends User{
+@Table(name = "students")
+public class Student extends User {
 
     @Id
-    @Column(name="id")
+    @Column(name = "student_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    @Column(name="academic_department_id")
+    @JoinColumn(name = "academic_department_id")
     private AcademicDepartment academicDepartment;
 
     @Column(name = "average_success")

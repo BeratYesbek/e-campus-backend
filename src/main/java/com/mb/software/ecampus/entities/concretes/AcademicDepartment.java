@@ -10,10 +10,11 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "academic_departments")
 public class AcademicDepartment {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "academic_department_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -21,7 +22,6 @@ public class AcademicDepartment {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    @Column(name = "academic_unit_id")
+    @JoinColumn(name = "academic_unit_id")
     private AcademicUnit academicUnit;
 }

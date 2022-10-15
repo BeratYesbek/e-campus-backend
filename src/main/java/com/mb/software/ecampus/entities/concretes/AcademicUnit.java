@@ -12,9 +12,10 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "academic_units")
 public class AcademicUnit {
     @Id
-    @Column(name = "id")
+    @Column(name = "academic_unit_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 

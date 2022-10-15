@@ -11,10 +11,11 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "employee_departments")
 public class EmployeeDepartment {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "employee_department_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

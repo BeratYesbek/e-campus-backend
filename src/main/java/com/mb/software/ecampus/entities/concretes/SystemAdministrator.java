@@ -12,10 +12,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "system_administrators")
-public class SystemAdministrator  extends User {
+public class SystemAdministrator extends User {
 
     @Id
-    @JoinColumn(name= "id")
+    @JoinColumn(name = "system_administrator_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
