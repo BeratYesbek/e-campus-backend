@@ -18,6 +18,14 @@ public class Employee extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @Column(name = "employee_department_id")
+    public EmployeeDepartment employeeDepartment;
 
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @Column(name = "academic_unit_id")
+    public AcademicUnit academicUnit;
 
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,8 +16,11 @@ public class EmployeeDepartment {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @Column(name = "name")
-    public String name;
+    private String name;
+
+    @OneToMany(mappedBy = "employeeDepartment")
+    private List<Employee> employee;
 }

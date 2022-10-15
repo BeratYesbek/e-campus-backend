@@ -15,8 +15,13 @@ public class AcademicDepartment {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @Column(name = "name")
-    public String name;
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @Column(name = "academic_unit_id")
+    private AcademicUnit academicUnit;
 }

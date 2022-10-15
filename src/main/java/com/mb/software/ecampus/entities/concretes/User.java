@@ -23,16 +23,16 @@ public class User extends DbEntity {
 
     @Column(name = "username")
     @NotNull
-    private String username;
+    public String username;
 
     @Column(name="email")
     @NotNull
-    private String email;
+    public String email;
 
     @Column(name = "birth_date")
     @NotNull
-    private Date birth_date;
+    public Date birth_date;
 
     @Column(name = "created_at")
-    private Date created_at;
+    public Date created_at;
 }
