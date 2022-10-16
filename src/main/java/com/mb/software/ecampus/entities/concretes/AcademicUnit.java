@@ -19,6 +19,9 @@ public class AcademicUnit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "academicType")
     private AcademicType academicType;
 
