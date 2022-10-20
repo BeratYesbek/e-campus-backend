@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.business.abstracts.comman;
+package com.mb.software.ecampus.business.abstracts.common;
 
 import com.mb.software.ecampus.core.utilities.Result;
 import com.mb.software.ecampus.core.utilities.data.DataResult;
