@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,4 +25,7 @@ public class AcademicDepartment {
     @ManyToOne
     @JoinColumn(name = "academic_unit_id")
     private AcademicUnit academicUnit;
+
+    @OneToMany(mappedBy = "academicDepartment")
+    private List<Student> students;
 }
