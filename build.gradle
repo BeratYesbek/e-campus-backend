@@ -21,6 +21,13 @@ repositories {
 }
 
 dependencies {
+
+    // swagger
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-parent:2.7.4'
+
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'org.projectlombok:lombok'
