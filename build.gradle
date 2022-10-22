@@ -8,6 +8,9 @@ plugins {
 group = 'com.mb.software'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+test {
+    useJUnitPlatform()
+}
 
 configurations {
     compileOnly {
@@ -27,6 +30,12 @@ dependencies {
     implementation 'io.springfox:springfox-swagger2:3.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-parent:2.7.4'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.junit.vintage:junit-vintage-engine'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     implementation 'com.auth0:java-jwt:4.2.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
