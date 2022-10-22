@@ -1,7 +1,7 @@
 package com.mb.software.ecampus.entities.concretes;
 
 
-import com.mb.software.ecampus.entities.abstracts.DbEntity;
+import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
