@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.entities.abstracts;
+package com.mb.software.ecampus.core.entities.abstracts;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
