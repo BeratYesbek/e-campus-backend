@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.core.utilities;
+package com.mb.software.ecampus.core.utilities.results;
 
 public class Result {
     private String message;

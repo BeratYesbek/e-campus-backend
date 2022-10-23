@@ -1,12 +1,10 @@
 package com.mb.software.ecampus.api.controllers;
 
 import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
-import com.mb.software.ecampus.core.utilities.Result;
-import com.mb.software.ecampus.core.utilities.data.DataResult;
-import com.mb.software.ecampus.core.utilities.data.SuccessDataResult;
+import com.mb.software.ecampus.core.utilities.results.Result;
+import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +41,7 @@ public class AcademicDepartmentsController {
     }
 
     @GetMapping
-    private ResponseEntity<DataResult<List<AcademicDepartment>>> getAll() {
+    public ResponseEntity<DataResult<List<AcademicDepartment>>> getAll() {
         return new ResponseEntity<>(academicDepartmentService.getAll(), HttpStatus.OK);
     }
 }

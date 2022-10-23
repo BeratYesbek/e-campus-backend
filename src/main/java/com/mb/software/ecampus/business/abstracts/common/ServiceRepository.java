@@ -1,7 +1,7 @@
 package com.mb.software.ecampus.business.abstracts.common;
 
-import com.mb.software.ecampus.core.utilities.Result;
-import com.mb.software.ecampus.core.utilities.data.DataResult;
+import com.mb.software.ecampus.core.utilities.results.Result;
+import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 
 import java.util.List;
 
