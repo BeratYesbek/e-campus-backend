@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.core.utilities;
+package com.mb.software.ecampus.core.utilities.results;
 
 public class ErrorResult extends Result {
     public ErrorResult(String message) {

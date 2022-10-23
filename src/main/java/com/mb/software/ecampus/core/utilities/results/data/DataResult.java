@@ -1,6 +1,6 @@
-package com.mb.software.ecampus.core.utilities.data;
+package com.mb.software.ecampus.core.utilities.results.data;
 
-import com.mb.software.ecampus.core.utilities.Result;
+import com.mb.software.ecampus.core.utilities.results.Result;
 
 public class DataResult<T> extends Result {
 

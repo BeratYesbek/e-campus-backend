@@ -1,12 +1,12 @@
 package com.mb.software.ecampus.business.concretes;
 
 import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
-import com.mb.software.ecampus.core.utilities.Result;
-import com.mb.software.ecampus.core.utilities.SuccessResult;
-import com.mb.software.ecampus.core.utilities.data.DataResult;
-import com.mb.software.ecampus.core.utilities.data.SuccessDataResult;
+import com.mb.software.ecampus.core.annotations.SecurityOperation;
+import com.mb.software.ecampus.core.utilities.results.Result;
+import com.mb.software.ecampus.core.utilities.results.SuccessResult;
+import com.mb.software.ecampus.core.utilities.results.data.DataResult;
+import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.dataAccess.dao.AcademicDepartmentDao;
-import com.mb.software.ecampus.dataAccess.dao.AcademicUnitDao;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +44,7 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
         return new SuccessDataResult<>(academicDepartmentDao.findById(id).get());
     }
 
+    @SecurityOperation(security = "user")
     @Override
     public DataResult<List<AcademicDepartment>> getAll() {
         return new SuccessDataResult<>(academicDepartmentDao.findAll());

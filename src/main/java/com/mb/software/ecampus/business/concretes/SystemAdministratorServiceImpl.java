@@ -1,10 +1,10 @@
 package com.mb.software.ecampus.business.concretes;
 
 import com.mb.software.ecampus.business.abstracts.SystemAdministratorService;
-import com.mb.software.ecampus.core.utilities.Result;
-import com.mb.software.ecampus.core.utilities.SuccessResult;
-import com.mb.software.ecampus.core.utilities.data.DataResult;
-import com.mb.software.ecampus.core.utilities.data.SuccessDataResult;
+import com.mb.software.ecampus.core.utilities.results.Result;
+import com.mb.software.ecampus.core.utilities.results.SuccessResult;
+import com.mb.software.ecampus.core.utilities.results.data.DataResult;
+import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.dataAccess.dao.SystemAdministratorDao;
 import com.mb.software.ecampus.entities.concretes.SystemAdministrator;
 import org.springframework.beans.factory.annotation.Autowired;

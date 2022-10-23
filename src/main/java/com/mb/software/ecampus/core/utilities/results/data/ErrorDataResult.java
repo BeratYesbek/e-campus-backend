@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.core.utilities.data;
+package com.mb.software.ecampus.core.utilities.results.data;
 
 public class ErrorDataResult<T> extends DataResult<T> {
     public ErrorDataResult(T data, String message) {
