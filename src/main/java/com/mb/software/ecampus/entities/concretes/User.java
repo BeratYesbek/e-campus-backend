@@ -38,6 +38,9 @@ public class User extends DbEntity {
     @Column(name = "created_at")
     private Date created_at;
 
+    @Column(name = "password")
+    private String password;
+
  /*   @OneToMany(mappedBy = "user")
     private List<Student> students;
 
