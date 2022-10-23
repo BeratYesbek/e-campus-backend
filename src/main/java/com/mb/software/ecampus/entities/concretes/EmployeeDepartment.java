@@ -1,5 +1,6 @@
 package com.mb.software.ecampus.entities.concretes;
 
+import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "employee_departments")
-public class EmployeeDepartment {
+public class EmployeeDepartment extends DbEntity {
 
     @Id
     @Column(name = "employee_department_id")
@@ -22,6 +23,6 @@ public class EmployeeDepartment {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "employeeDepartment")
-    private List<Employee> employee;
+  /*  @OneToMany(mappedBy = "employeeDepartment")
+    private List<Employee> employee;*/
 }

@@ -1,5 +1,6 @@
 package com.mb.software.ecampus.entities.concretes;
 
+import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicRate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "academic_personals")
-public class AcademicPersonal {
+public class AcademicPersonal extends DbEntity {
 
     @Id
     @Column(name = "academic_personal_id")
@@ -22,5 +23,8 @@ public class AcademicPersonal {
     @Column(name = "academic_rate")
     private AcademicRate academicRate;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
 }
