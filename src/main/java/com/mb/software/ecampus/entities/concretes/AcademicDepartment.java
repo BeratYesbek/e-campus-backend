@@ -1,5 +1,6 @@
 package com.mb.software.ecampus.entities.concretes;
 
+import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "academic_departments")
-public class AcademicDepartment {
+public class AcademicDepartment extends DbEntity {
 
     @Id
     @Column(name = "academic_department_id")
@@ -26,6 +27,6 @@ public class AcademicDepartment {
     @JoinColumn(name = "academic_unit_id")
     private AcademicUnit academicUnit;
 
-    @OneToMany(mappedBy = "academicDepartment")
-    private List<Student> students;
+ /*   @OneToMany(mappedBy = "academicDepartment")
+    private List<Student> students;*/
 }

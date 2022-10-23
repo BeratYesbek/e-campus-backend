@@ -1,30 +1,39 @@
 package com.mb.software.ecampus.entities.concretes;
 
+import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "employees")
-public class Employee extends User {
+public class Employee extends DbEntity {
 
     @Id
     @Column(name = "employee_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "employee_department_id")
-    public EmployeeDepartment employeeDepartment;
+    private EmployeeDepartment employeeDepartment;
 
     @ManyToOne
     @JoinColumn(name = "academic_unit_id")
-    public AcademicUnit academicUnit;
+    private AcademicUnit academicUnit;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    /*@OneToMany(mappedBy = "employee")
+    private List<AcademicPersonal> academicPersonals;*/
 
 }

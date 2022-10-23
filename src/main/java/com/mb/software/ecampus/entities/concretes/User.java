@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,16 +25,25 @@ public class User extends DbEntity {
 
     @Column(name = "username")
     @NotNull
-    public String username;
+    private String username;
 
     @Column(name = "email")
     @NotNull
-    public String email;
+    private String email;
 
     @Column(name = "birth_date")
     @NotNull
-    public Date birth_date;
+    private Date birth_date;
 
     @Column(name = "created_at")
-    public Date created_at;
+    private Date created_at;
+
+ /*   @OneToMany(mappedBy = "user")
+    private List<Student> students;
+
+    @OneToMany(mappedBy = "user")
+    private List<Employee> employees;
+
+    @OneToMany(mappedBy = "user")
+    private List<SystemAdministrator> systemAdministrators;*/
 }
