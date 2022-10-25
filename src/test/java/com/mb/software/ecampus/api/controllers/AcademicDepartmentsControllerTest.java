@@ -9,6 +9,7 @@ import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import com.mb.software.ecampus.entities.concretes.AcademicUnit;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.*;
@@ -27,6 +28,11 @@ public class AcademicDepartmentsControllerTest {
 
     private AcademicDepartmentsController academicDepartmentsController;
 
+    @BeforeEach
+    public void executeServices() {
+        service = mock(AcademicDepartmentService.class);
+        academicDepartmentsController = mock(AcademicDepartmentsController.class);
+    }
     @Test
     public void testGetAllMethodIsWorkingProperly() {
         when(service.getAll()).thenReturn(prepareDataList());
