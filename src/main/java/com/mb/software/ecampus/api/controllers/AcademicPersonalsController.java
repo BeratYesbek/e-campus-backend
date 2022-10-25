@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/academic_personals")
-public class AcademicPersonalController {
+public class AcademicPersonalsController {
     private final AcademicPersonalService academicPersonalService;
 
-    public AcademicPersonalController(AcademicPersonalService academicPersonalService) {
+    public AcademicPersonalsController(AcademicPersonalService academicPersonalService) {
         this.academicPersonalService = academicPersonalService;
     }
 
