@@ -6,7 +6,7 @@ import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.dataAccess.dao.UserDao;
-import com.mb.software.ecampus.entities.concretes.User;
+import com.mb.software.ecampus.core.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

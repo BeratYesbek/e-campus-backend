@@ -4,9 +4,9 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.security.jwt.token.Token;
 import com.mb.software.ecampus.core.security.jwt.token.TokenConstants;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,7 +34,7 @@ public class JwtHelperImpl implements JwtHelper {
                 .withIssuer(url)
                 .withNotBefore(new Date(System.currentTimeMillis()))
                 .withKeyId(UUID.randomUUID().toString())
-                .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .withClaim("roles", "USER")
                 .sign(algorithm);
         return new Token(accessToken, expiry);
     }

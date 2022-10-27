@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.entities.concretes;
+package com.mb.software.ecampus.core.entities;
 
 
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity

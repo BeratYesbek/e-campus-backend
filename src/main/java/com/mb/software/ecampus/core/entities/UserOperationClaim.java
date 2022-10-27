@@ -1,7 +1,6 @@
 package com.mb.software.ecampus.core.entities;
 
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
-import com.mb.software.ecampus.entities.concretes.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
