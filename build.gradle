@@ -47,6 +47,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.8.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+
+
 
 }
 
