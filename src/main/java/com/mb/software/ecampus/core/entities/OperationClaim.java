@@ -23,6 +23,4 @@ public class OperationClaim extends DbEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "operationClaim")
-    private List<UserOperationClaim> userOperationClaims;
 }

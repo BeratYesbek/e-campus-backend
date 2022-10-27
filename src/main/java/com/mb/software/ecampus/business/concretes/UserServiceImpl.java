@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public DataResult<User> getByEmail(String email) {
-        User user = userDao.finByEmail(email);
+        User user = userDao.findByEmail(email);
         if (user != null) {
             return new SuccessDataResult<>(user);
         }
