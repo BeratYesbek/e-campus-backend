@@ -1,8 +1,9 @@
 package com.mb.software.ecampus.api.controllers;
 
 import com.mb.software.ecampus.business.abstracts.LessonService;
-import com.mb.software.ecampus.core.utilities.Result;
-import com.mb.software.ecampus.core.utilities.data.DataResult;
+
+import com.mb.software.ecampus.core.utilities.results.Result;
+import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.entities.concretes.Lesson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

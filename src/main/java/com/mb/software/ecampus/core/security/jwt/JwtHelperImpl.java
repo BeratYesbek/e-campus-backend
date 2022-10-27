@@ -10,11 +10,14 @@ import com.mb.software.ecampus.core.security.jwt.token.TokenConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class JwtHelperImpl implements JwtHelper {
 
     private final Environment environment;
