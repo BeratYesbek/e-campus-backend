@@ -21,7 +21,7 @@ public class AcademicDepartmentsController {
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<AcademicDepartment>> add(@RequestBody AcademicDepartment academicDepartment) {
+    public ResponseEntity<DataResult<AcademicDepartment>> add(@RequestBody AcademicDepartment academicDepartment) {
         return new ResponseEntity<>(academicDepartmentService.add(academicDepartment), HttpStatus.CREATED);
     }
 
