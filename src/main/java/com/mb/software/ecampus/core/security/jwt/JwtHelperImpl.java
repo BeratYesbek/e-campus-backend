@@ -12,6 +12,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -27,16 +29,17 @@ public class JwtHelperImpl implements JwtHelper {
     }
 
     @Override
-    public Token createToken(User user, String url) {
+    public Token createToken(User user, String[] roles, String url) {
         Algorithm algorithm = Algorithm.HMAC512(environment.getProperty(TokenConstants.securityKey));
-        Date expiry = new Date(System.currentTimeMillis());
+        long date = System.currentTimeMillis() + 14 * 24 * 3600 * 1000;
+        Date expiry = new Date(date);
         String accessToken = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(expiry)
                 .withIssuer(url)
                 .withNotBefore(new Date(System.currentTimeMillis()))
                 .withKeyId(UUID.randomUUID().toString())
-                .withClaim("roles", "USER")
+                .withClaim("roles", Arrays.asList(roles))
                 .sign(algorithm);
         return new Token(accessToken, expiry);
     }

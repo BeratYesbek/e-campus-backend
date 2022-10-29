@@ -43,6 +43,7 @@ public class EmployeeDepartmentServiceImpl implements EmployeeDepartmentService 
         return new SuccessDataResult<>(employeeDepartmentDao.findById(id).get());
     }
 
+
     @Override
     public DataResult<List<EmployeeDepartment>> getAll() {
         return new SuccessDataResult<>(employeeDepartmentDao.findAll());

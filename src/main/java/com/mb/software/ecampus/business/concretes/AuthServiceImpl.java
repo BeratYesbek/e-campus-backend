@@ -15,6 +15,9 @@ import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.entities.dtos.UserLoginDto;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AuthServiceImpl implements AuthService {
 
@@ -34,8 +37,10 @@ public class AuthServiceImpl implements AuthService {
         DataResult<User> existingUserResult = userService.getByEmail(userLoginDto.getEmail());
         if (existingUserResult.isSuccess()) {
             boolean result = PasswordHelper.verifyPassword(userLoginDto.getPassword(), existingUserResult.getData().getPassword());
+            DataResult<List<UserOperationClaim>> roleResult = userOperationClaimService.getByUserId(existingUserResult.getData().getId());
+            List<String> roles = roleResult.getData().stream().map(t -> t.getOperationClaim().getName()).toList();
             if (result) {
-                Token token = jwtHelper.createToken(existingUserResult.getData(), "");
+                Token token = jwtHelper.createToken(existingUserResult.getData(),  roles.stream().toArray(String[]::new),"" );
                 return new SuccessDataResult<>(token, "User has been logged in successfully");
             } else {
                 return new ErrorDataResult<>(null, "Wrong Credentials");
@@ -53,10 +58,11 @@ public class AuthServiceImpl implements AuthService {
         }
         user.setPassword(PasswordHelper.hashPassword(user.getPassword()));
         DataResult<User> createdUserResult = userService.add(user);
-        Token token = jwtHelper.createToken(createdUserResult.getData(), "");
+        DataResult<UserOperationClaim> operationClaimDataResult = userOperationClaimService.add(new UserOperationClaim(0, createdUserResult.getData(), new OperationClaim(1, "")));
+        String[] roles = new String[]{operationClaimDataResult.getData().getOperationClaim().getName()};
+        Token token = jwtHelper.createToken(createdUserResult.getData(), roles, "");
         token.setUser(createdUserResult.getData());
         return new SuccessDataResult<>(token);
-        //userOperationClaimService.add(new UserOperationClaim());
 
 
     }

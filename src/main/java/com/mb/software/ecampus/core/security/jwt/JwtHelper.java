@@ -5,7 +5,7 @@ import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.security.jwt.token.Token;
 
 public interface JwtHelper {
-    Token createToken(User user, String url);
+    Token createToken(User user, String[] roles, String url);
 
     DecodedJWT decodeJwtAndClaims(String token);
 }
