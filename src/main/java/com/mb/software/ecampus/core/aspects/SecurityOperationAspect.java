@@ -34,7 +34,7 @@ public class SecurityOperationAspect {
 
     @Before(AnnotationPackageConstants.SECURITY_ANNOTATION_PACKAGE)
     public void before(JoinPoint point) throws Exception {
-        String token = request.getHeader("Token");
+        String token = request.getHeader("Authorization");
 
         if (token == null) {
             throw  new AuthenticationException("You must log in");

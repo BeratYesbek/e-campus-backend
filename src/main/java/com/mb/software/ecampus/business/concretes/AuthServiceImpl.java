@@ -37,9 +37,9 @@ public class AuthServiceImpl implements AuthService {
         DataResult<User> existingUserResult = userService.getByEmail(userLoginDto.getEmail());
         if (existingUserResult.isSuccess()) {
             boolean result = PasswordHelper.verifyPassword(userLoginDto.getPassword(), existingUserResult.getData().getPassword());
-            DataResult<List<UserOperationClaim>> roleResult = userOperationClaimService.getByUserId(existingUserResult.getData().getId());
-            List<String> roles = roleResult.getData().stream().map(t -> t.getOperationClaim().getName()).toList();
             if (result) {
+                DataResult<List<UserOperationClaim>> roleResult = userOperationClaimService.getByUserId(existingUserResult.getData().getId());
+                List<String> roles = roleResult.getData().stream().map(t -> t.getOperationClaim().getName()).toList();
                 Token token = jwtHelper.createToken(existingUserResult.getData(),  roles.stream().toArray(String[]::new),"" );
                 return new SuccessDataResult<>(token, "User has been logged in successfully");
             } else {

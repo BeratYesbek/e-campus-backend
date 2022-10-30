@@ -44,7 +44,7 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
         return new SuccessDataResult<>(academicDepartmentDao.findById(id).get());
     }
 
-    @SecurityOperation(security = {"User","Admin"})
+    @SecurityOperation(security = {"User", "Admin"})
     @Override
     public DataResult<List<AcademicDepartment>> getAll() {
         return new SuccessDataResult<>(academicDepartmentDao.findAll());

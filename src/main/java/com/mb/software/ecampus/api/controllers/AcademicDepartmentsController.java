@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/academic_departments")
-public class AcademicDepartmentsController {
+public class AcademicDepartmentsController extends BaseController {
 
     private final AcademicDepartmentService academicDepartmentService;
 
@@ -44,4 +44,5 @@ public class AcademicDepartmentsController {
     public ResponseEntity<DataResult<List<AcademicDepartment>>> getAll() {
         return new ResponseEntity<>(academicDepartmentService.getAll(), HttpStatus.OK);
     }
+
 }
