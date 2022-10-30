@@ -10,13 +10,11 @@ import com.mb.software.ecampus.core.utilities.roles.AnnotationRolesResolver;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
 import java.util.List;
 
 @Aspect
@@ -37,7 +35,7 @@ public class SecurityOperationAspect {
         String token = request.getHeader("Authorization");
 
         if (token == null) {
-            throw  new AuthenticationException("You must log in");
+            throw new AuthenticationException("You must log in");
         }
 
         DecodedJWT decodedJWT = jwtHelper.decodeJwtAndClaims(token);

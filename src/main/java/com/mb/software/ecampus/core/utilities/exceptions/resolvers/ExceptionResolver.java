@@ -6,13 +6,18 @@ import org.springframework.http.ResponseEntity;
 
 import javax.naming.AuthenticationException;
 import java.util.Date;
-
+/**
+ * responsible to manage exceptions
+ * @author BeratYesbek
+ *
+ * */
 public class ExceptionResolver {
 
+
     public static ResponseEntity<ErrorDetailEntity> exceptionResolve(Exception e) {
-        if (e.getClass().equals(AuthorizationException.class)) {
+        if (e.getCause().getClass().equals(AuthorizationException.class)) {
             return resolveAuthorizationException(e);
-        } else if (e.getClass().equals(AuthenticationException.class)) {
+        } else if (e.getCause().getClass().equals(javax.security.sasl.AuthenticationException.class)) {
             return resolveAuthenticationException(e);
         }
 
