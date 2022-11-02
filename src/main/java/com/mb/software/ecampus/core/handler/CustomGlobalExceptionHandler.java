@@ -22,7 +22,6 @@ public class CustomGlobalExceptionHandler {
                         .exceptionType(errorDetailEntity.getExceptionType())
                         .date(errorDetailEntity.getDate())
                         .exceptionTrace(errorDetailEntity.getExceptionTrace())
-                        .build()
-                , e.getStatusCode());
+                        .build(), e.getStatusCode());
     }
 }
