@@ -22,7 +22,7 @@ public class LessonsController {
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<Lesson>> add(@RequestBody Lesson lesson){
+    private ResponseEntity<DataResult<Lesson>> add(@RequestBody Lesson lesson) throws Exception {
         return new ResponseEntity<>(lessonService.add(lesson), HttpStatus.CREATED);
     }
 

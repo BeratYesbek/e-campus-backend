@@ -15,17 +15,20 @@ public class ExceptionResolver {
 
 
     public static ResponseEntity<ErrorDetailEntity> exceptionResolve(Exception e) {
-        if (e.getCause().getClass().equals(AuthorizationException.class)) {
-            return resolveAuthorizationException(e);
-        } else if (e.getCause().getClass().equals(javax.security.sasl.AuthenticationException.class)) {
-            return resolveAuthenticationException(e);
+        if (e.getCause() != null) {
+            if (e.getCause().getClass().equals(AuthorizationException.class)) {
+                return resolveAuthorizationException(e);
+            } else if (e.getCause().getClass().equals(javax.security.sasl.AuthenticationException.class)) {
+                return resolveAuthenticationException(e);
+            }
         }
 
-        Throwable throwable = e.getCause();
+
+
         return new ResponseEntity<>(ErrorDetailEntity
                 .builder()
                 .exceptionType(ErrorType.UNUSUAL.name())
-                .message(throwable.getMessage())
+                .message(e.getMessage())
                 .date(new Date())
                 .success(false).build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }

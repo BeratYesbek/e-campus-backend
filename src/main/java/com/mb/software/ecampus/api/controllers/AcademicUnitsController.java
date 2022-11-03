@@ -20,7 +20,7 @@ public class AcademicUnitsController {
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<AcademicUnit>> add(@RequestBody AcademicUnit academicUnit) {
+    private ResponseEntity<DataResult<AcademicUnit>> add(@RequestBody AcademicUnit academicUnit) throws Exception {
         return new ResponseEntity<>(academicUnitService.add(academicUnit), HttpStatus.CREATED);
     }
 

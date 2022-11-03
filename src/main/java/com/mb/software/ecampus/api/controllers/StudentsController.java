@@ -21,7 +21,7 @@ public class StudentsController {
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<Student>> add(@RequestBody Student student) {
+    private ResponseEntity<DataResult<Student>> add(@RequestBody Student student) throws Exception {
         DataResult result = studentService.add(student);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.CREATED);

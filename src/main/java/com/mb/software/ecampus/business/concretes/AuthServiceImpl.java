@@ -51,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public DataResult<Token> register(User user) {
+    public DataResult<Token> register(User user) throws Exception {
         DataResult<User> checkUser = userService.getByEmail(user.getEmail());
         if (checkUser.isSuccess()) {
             return new ErrorDataResult<>(null, "User exists");

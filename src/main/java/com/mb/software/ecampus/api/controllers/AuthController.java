@@ -31,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    public ResponseEntity<DataResult<Token>> register(@RequestBody User user) {
+    public ResponseEntity<DataResult<Token>> register(@RequestBody User user) throws Exception {
         DataResult<Token> result = authService.register(user);
         if (result.isSuccess()) {
             return ResponseEntity.ok(result);

@@ -10,4 +10,9 @@ public abstract class BaseLoggingService {
 
     public void error(LogErrorDetail logErrorDetail) {
     }
+
+    public void waning(LogDetail logDetail) {
+
+    }
+
 }

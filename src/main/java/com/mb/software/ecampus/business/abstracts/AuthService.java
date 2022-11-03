@@ -9,5 +9,5 @@ public interface AuthService {
 
     DataResult<Token> login(UserLoginDto userLoginDto);
 
-    DataResult<Token> register(User user);
+    DataResult<Token> register(User user) throws Exception;
 }

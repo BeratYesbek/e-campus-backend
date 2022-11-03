@@ -36,8 +36,8 @@ public class DbLogging extends BaseLoggingService {
     }
 
     private DbLog setDbLogErrorDetail(LogErrorDetail logErrorDetail, LogLevel logLevel) {
-        DbLog dbLog = DbLog.builder().logLevel(logLevel).message("logErrorDetail.getMessage()").build();
-        dbLog.setLogDetail(null);
+        DbLog dbLog = DbLog.builder().logLevel(logLevel).message(logErrorDetail.getMessage()).build();
+        dbLog.setLogErrorDetail(logErrorDetail);
         dbLog.setCreatedAt();
         return dbLog;
     }

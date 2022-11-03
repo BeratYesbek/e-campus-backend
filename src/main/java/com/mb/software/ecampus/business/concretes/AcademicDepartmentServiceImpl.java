@@ -13,6 +13,7 @@ import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.security.sasl.AuthenticationException;
 import java.util.List;
 
 @Service
@@ -27,8 +28,9 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
 
     @Logging(logType = DbLogging.class)
     @Override
-    public DataResult<AcademicDepartment> add(AcademicDepartment entity) {
-        return new SuccessDataResult<AcademicDepartment>(academicDepartmentDao.save(entity));
+    public DataResult<AcademicDepartment> add(AcademicDepartment entity) throws Exception {
+        throw new Exception();
+        //return new SuccessDataResult<AcademicDepartment>(academicDepartmentDao.save(entity));
     }
 
     @Override
