@@ -1,16 +1,23 @@
-package com.mb.software.ecampus.core.crossCuttingConcerns.logging;
+package com.mb.software.ecampus.core.crossCuttingConcerns.logging.details;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import java.util.Date;
 
 @Builder
+@Getter
 public class LogDetail {
 
     private String message;
+
     private String parameters;
+
     private String methodName;
+
     private String packageName;
+
     private int userId;
+
     private Date createdAt;
 }

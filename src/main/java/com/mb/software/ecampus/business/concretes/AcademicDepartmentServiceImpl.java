@@ -3,7 +3,7 @@ package com.mb.software.ecampus.business.concretes;
 import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 import com.mb.software.ecampus.core.annotations.Logging;
 import com.mb.software.ecampus.core.annotations.SecurityOperation;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.DbLogging;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.DbLogging;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
@@ -25,6 +25,7 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
         this.academicDepartmentDao = academicDepartmentDao;
     }
 
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<AcademicDepartment> add(AcademicDepartment entity) {
         return new SuccessDataResult<AcademicDepartment>(academicDepartmentDao.save(entity));

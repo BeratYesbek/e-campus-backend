@@ -3,7 +3,7 @@ package com.mb.software.ecampus.core.entities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.LogDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogDetail;
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.*;
 import org.springframework.boot.logging.LogLevel;
@@ -15,20 +15,25 @@ import java.util.Date;
 
 @Entity
 @Data
+@Builder
 @Table(name = "db_logs")
+@AllArgsConstructor
 public class DbLog extends DbEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "db_log_id")
     private int id;
     private String logDetail;
-
+    private String message;
     private LogLevel logLevel;
-
     private Date createdAt;
 
+    public DbLog() {
 
-    public void setCreatedAt(Date createdAt) {
+    }
+
+
+    public void setCreatedAt() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         this.createdAt = dateFormat.getCalendar().getTime();
     }
