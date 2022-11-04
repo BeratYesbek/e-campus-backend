@@ -43,7 +43,7 @@ public class AcademicDepartmentsControllerTest {
     }
 
     @Test
-    public void testAddMethodIsWorkingProperly() {
+    public void testAddMethodIsWorkingProperly() throws Exception {
         when(service.add(any())).thenReturn(prepareCreatedData());
         ResponseEntity<DataResult<AcademicDepartment>> response = academicDepartmentsController.add(any());
         assertEquals(response.getStatusCode(), HttpStatus.CREATED);
