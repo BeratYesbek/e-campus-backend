@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
+/**
+ * Whenever application throw an exception this class will handle exception and return as a response
+ * @author Berat Yesbek (Feanor)
+ */
 @ControllerAdvice
 public class CustomGlobalExceptionHandler {
 

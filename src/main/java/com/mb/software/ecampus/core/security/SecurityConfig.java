@@ -12,6 +12,10 @@ import javax.servlet.Filter;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * Enable all CORS
+ * @author Berat Yesbek (Feanor)
+ */
 @Configuration
 public class SecurityConfig {
 

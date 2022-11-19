@@ -22,7 +22,16 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Date;
 
-
+/**
+ * Logging Db or file aspect, it works only methods. Whenever method complete 'after method' will run.
+ * Whenever system throw an exception 'afterThrowing method' will work for logging all errors to Db or File.
+ * Aspect works with Logging Annotation
+ * @see Logging
+ * @see BaseLoggingService
+ * @see DbLogging
+ * @see FileLogging
+ * @author Berat Yesbek (Feanor)
+ */
 @Aspect
 @Configuration
 public class LoggingAspect {
@@ -42,13 +51,16 @@ public class LoggingAspect {
         BaseLoggingService loggingService = getBaseLoggingServiceInstance(joinPoint);
         loggingService.info(setLogDetail(joinPoint));
     }
-
+    /**
+     * Handle all error for logging to Db or File
+     */
     @AfterThrowing(pointcut = "execution(* *(..)) && @annotation(com.mb.software.ecampus.core.annotations.Logging)", throwing = "exception")
     public void afterThrowing(JoinPoint joinPoint, Exception exception) {
         isSuccess = false;
         BaseLoggingService loggingService = getBaseLoggingServiceInstance(joinPoint);
         loggingService.error(setLogErrorDetail(joinPoint, exception));
     }
+
 
     private BaseLoggingService getBaseLoggingServiceInstance(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
@@ -63,7 +75,6 @@ public class LoggingAspect {
         }
         return loggingService;
     }
-
 
     @SneakyThrows
     private LogErrorDetail setLogErrorDetail(JoinPoint joinPoint, Exception exception) {
@@ -85,7 +96,7 @@ public class LoggingAspect {
                 joinPoint.getClass().getPackageName(),
                 1,
                 new Date(),
-                Arrays.toString(exception.getStackTrace()),exceptionType);
+                Arrays.toString(exception.getStackTrace()), exceptionType);
     }
 
     @SneakyThrows

@@ -16,7 +16,13 @@ import org.springframework.context.annotation.Configuration;
 import javax.security.sasl.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * Contains security operation, authentication and authorization. Authentication and authorization use JWT
+ * Aspect works with SecurityOperation annotation
+ * @see SecurityOperation
+ * @see JwtHelper
+ * @author Berat Yesbek (Feanor)
+ */
 @Aspect
 @Configuration
 public class SecurityOperationAspect {

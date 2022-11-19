@@ -18,6 +18,10 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+/**
+ * Contains JWHelper method that create token and decoder token by secret key
+ * @author Berat Yesbek (Feanor)
+ */
 @Component
 public class JwtHelperImpl implements JwtHelper {
 

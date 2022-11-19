@@ -19,7 +19,6 @@ public class ExceptionHandlerAspect {
 
     @AfterThrowing(pointcut = "execution(* com.mb.software..*(..)))", throwing = "ex")
     public void exceptionHandler(JoinPoint joinPoint, Exception ex) {
-        System.out.println("Hello");
        // log database
     }
 }

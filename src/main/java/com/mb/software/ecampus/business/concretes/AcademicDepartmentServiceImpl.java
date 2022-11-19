@@ -29,8 +29,7 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
     @Logging(logType = DbLogging.class)
     @Override
     public DataResult<AcademicDepartment> add(AcademicDepartment entity) throws Exception {
-        throw new Exception();
-        //return new SuccessDataResult<AcademicDepartment>(academicDepartmentDao.save(entity));
+        return new SuccessDataResult<AcademicDepartment>(academicDepartmentDao.save(entity));
     }
 
     @Override

@@ -18,7 +18,7 @@ public class EmployeeDepartment extends DbEntity {
     @Id
     @Column(name = "employee_department_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+        private int id;
 
     @Column(name = "name")
     private String name;

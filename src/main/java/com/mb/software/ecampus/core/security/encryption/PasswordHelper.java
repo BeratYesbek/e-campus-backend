@@ -1,8 +1,11 @@
 package com.mb.software.ecampus.core.security.encryption;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * When user login, registers or refresh his password. It encodes or decodes to passwords.
+ * @author Berat Yesbek (Feanor)
+ */
 public class PasswordHelper {
 
     public static String hashPassword(String password) {
