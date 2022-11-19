@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * AcademicPersonal represent who is working as an academician. AcademicPersonal is an Employee
+ * @see Employee
+ * @author Melih Dede (MDD)
+ */
 @Data
 @Entity
 @AllArgsConstructor

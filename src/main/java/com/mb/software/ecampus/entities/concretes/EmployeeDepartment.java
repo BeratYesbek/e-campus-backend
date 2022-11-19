@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * EmployeeDepartment represent work department at University
+ * @example IT department, Sport Department etc..
+ * @author Berat Yesbek (Feanor)
+ */
 @Data
 @Entity
 @NoArgsConstructor

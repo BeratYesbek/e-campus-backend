@@ -9,6 +9,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.*;
 
+/**
+ * Employee represent who is working at university. Each employee belongs to EmployeeDepartment and AcademicUnit.
+ * Furthermore, each Employee is a user.
+ * @see AcademicDepartment
+ * @see AcademicUnit
+ * @see User
+ * @author Berat Yesbek (Feanor)
+ */
 @Data
 @Entity
 @AllArgsConstructor

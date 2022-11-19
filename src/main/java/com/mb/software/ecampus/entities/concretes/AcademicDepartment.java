@@ -6,8 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
+/**
+ * AcademicDepartment represent department in Academic Unit
+ * @example AcademicDepartment => Computer Engineering, AcademicUnit => Engineering Faculty
+ * @see AcademicUnit
+ * @author Berat Yesbek (Feanor)
+ */
 @Data
 @Entity
 @NoArgsConstructor
