@@ -20,27 +20,27 @@ public class AcademicUnitsController {
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<AcademicUnit>> add(@RequestBody AcademicUnit academicUnit) throws Exception {
+    public ResponseEntity<DataResult<AcademicUnit>> add(@RequestBody AcademicUnit academicUnit) throws Exception {
         return new ResponseEntity<>(academicUnitService.add(academicUnit), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<DataResult<AcademicUnit>> update(@PathVariable int id, @RequestBody AcademicUnit academicUnit) {
+    public ResponseEntity<DataResult<AcademicUnit>> update(@PathVariable int id, @RequestBody AcademicUnit academicUnit) {
         return new ResponseEntity<>(academicUnitService.update(academicUnit), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<Result> delete(@PathVariable int id) {
+    public ResponseEntity<Result> delete(@PathVariable int id) {
         return new ResponseEntity<>(academicUnitService.delete(id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<DataResult<AcademicUnit>> getById(@PathVariable int id) {
+    public ResponseEntity<DataResult<AcademicUnit>> getById(@PathVariable int id) {
         return new ResponseEntity<>(academicUnitService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping
-    private ResponseEntity<DataResult<List<AcademicUnit>>> getAll() {
+    public ResponseEntity<DataResult<List<AcademicUnit>>> getAll() {
         return new ResponseEntity<>(academicUnitService.getAll(), HttpStatus.OK);
     }
 }

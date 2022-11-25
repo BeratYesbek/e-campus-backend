@@ -50,8 +50,13 @@ public class AcademicDepartmentsControllerTest {
         assertEquals(response.getBody().getData(),prepareCreatedData().getData());
     }
 
+
     private static DataResult<AcademicDepartment> prepareCreatedData() {
-        return new SuccessDataResult<>(new AcademicDepartment(1, "Computer Engineering", new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY)));
+        return new SuccessDataResult<>(
+                new AcademicDepartment(
+                        1,
+                        "Computer Engineering",
+                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY)));
     }
 
     private DataResult<List<AcademicDepartment>> prepareDataList() {
