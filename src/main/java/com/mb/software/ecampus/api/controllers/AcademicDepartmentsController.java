@@ -26,17 +26,17 @@ public class AcademicDepartmentsController extends BaseController {
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<DataResult<AcademicDepartment>> update(@PathVariable int id, @RequestBody AcademicDepartment academicDepartment) {
+    public ResponseEntity<DataResult<AcademicDepartment>> update(@PathVariable int id, @RequestBody AcademicDepartment academicDepartment) {
         return new ResponseEntity<>(academicDepartmentService.update(academicDepartment), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<Result> delete(@PathVariable int id) {
+    public ResponseEntity<Result> delete(@PathVariable int id) {
         return new ResponseEntity<>(academicDepartmentService.delete(id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<DataResult<AcademicDepartment>> update(@PathVariable int id) {
+    public ResponseEntity<DataResult<AcademicDepartment>> getById(@PathVariable int id) {
         return new ResponseEntity<>(academicDepartmentService.getById(id), HttpStatus.OK);
     }
 

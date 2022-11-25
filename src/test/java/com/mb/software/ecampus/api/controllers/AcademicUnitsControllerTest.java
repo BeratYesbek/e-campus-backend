@@ -43,9 +43,12 @@ public class AcademicUnitsControllerTest {
         assertEquals(response.getBody().getData() ,prepareCreatedData().getData());
     }
 
-
-
     private static DataResult<AcademicUnit> prepareCreatedData() {
         return new SuccessDataResult<>(new AcademicUnit(1, "Engineering", AcademicType.FACULTY));
+    }
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
     }
 }
