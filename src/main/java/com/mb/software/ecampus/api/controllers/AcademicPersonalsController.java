@@ -13,34 +13,34 @@ import java.util.List;
 @RestController
 @RequestMapping("api/academic_personals")
 public class AcademicPersonalsController {
-    private final AcademicPersonalService academicPersonalService;
+    public final AcademicPersonalService academicPersonalService;
 
     public AcademicPersonalsController(AcademicPersonalService academicPersonalService) {
         this.academicPersonalService = academicPersonalService;
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<AcademicPersonal>> add(@RequestBody AcademicPersonal academicPersonal) throws Exception {
+    public ResponseEntity<DataResult<AcademicPersonal>> add(@RequestBody AcademicPersonal academicPersonal) throws Exception {
         return new ResponseEntity<>(academicPersonalService.add(academicPersonal), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<DataResult<AcademicPersonal>> update(@PathVariable int id, @RequestBody AcademicPersonal academicPersonal){
+    public ResponseEntity<DataResult<AcademicPersonal>> update(@PathVariable int id, @RequestBody AcademicPersonal academicPersonal){
         return new ResponseEntity<>(academicPersonalService.update(academicPersonal), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<Result> delete(@PathVariable int id){
+    public ResponseEntity<Result> delete(@PathVariable int id){
         return new ResponseEntity<>(academicPersonalService.delete(id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<DataResult<AcademicPersonal>> getById(@PathVariable int id){
+    public ResponseEntity<DataResult<AcademicPersonal>> getById(@PathVariable int id){
         return new ResponseEntity<>(academicPersonalService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping
-    private ResponseEntity<DataResult<List<AcademicPersonal>>> getALL(){
+    public ResponseEntity<DataResult<List<AcademicPersonal>>> getAll(){
         return new ResponseEntity<>(academicPersonalService.getAll(), HttpStatus.OK);
     }
 }
