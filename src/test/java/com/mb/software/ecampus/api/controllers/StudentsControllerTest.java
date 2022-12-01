@@ -43,7 +43,12 @@ public class StudentsControllerTest {
     private StudentsController studentController;
 
     @Test
-    public void testAddMethodIsWorkingProperly(){}
+    public void testAddMethodIsWorkingProperly() throws Exception{
+        when(service.add(any())).thenReturn(prepareCreatedData());
+        ResponseEntity<DataResult<Student>> response = studentController.add(any());
+        assertEquals(response.getStatusCode(),HttpStatus.CREATED);
+        assertEquals(response.getBody().getData(),prepareCreatedData().getData());
+    }
 
     @Test
     public void testGetAllMethodIsWorkingProperly(){
@@ -89,7 +94,7 @@ public class StudentsControllerTest {
         );
     }
 
-    private static DataResult<Student> prapareCreatedData(){
+    private static DataResult<Student> prepareCreatedData(){
         return new SuccessDataResult<>(
                 new Student(1,
                         new AcademicDepartment(1,"Computer Engineering",
