@@ -45,8 +45,83 @@ public class AcademicPersonalsControllerTest {
     public  void testGetAllMethodUsWorkingProperly(){
         when(service.getAll()).thenReturn(prepareDataList());
         ResponseEntity<DataResult<List<AcademicPersonal>>> response = academicPersonalsController.getAll();
-        assertEquals(response.getBody().getData(),prepareDataList());
+        assertEquals(response.getBody().getData(),prepareDataList().getData());
+
     }
+
+    @Test
+    public void testAddMethodIsWorkingProperly() throws Exception {
+        when(service.add(any())).thenReturn(prepareCreatedData());
+        ResponseEntity<DataResult<AcademicPersonal>> response =academicPersonalsController.add(any());
+        assertEquals(response.getStatusCode(),HttpStatus.CREATED);
+        assertEquals(response.getBody().getData(),prepareCreatedData().getData());
+    }
+
+    @Test
+    public void testUpdateIsWorkingProperly(){
+        when(service.update(any())).thenReturn(prepareUpdateData());
+        ResponseEntity<DataResult<AcademicPersonal>> response =academicPersonalsController.update(academicPersonelId,any());
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+        assertEquals(response.getBody().getData(),prepareUpdateData().getData());
+
+    }
+
+    @Test
+    public void testDeleteByIdIsWorkingProperly(){
+        when(service.delete(academicPersonelId)).thenReturn(new SuccessResult());
+        ResponseEntity<Result> response = academicPersonalsController.delete(academicPersonelId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+
+    }
+
+    @Test
+    public void testGetByIdIsWorkingProperly(){
+        when(service.getById(academicPersonelId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<AcademicPersonal>> response = academicPersonalsController.getById(academicPersonelId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getData(), prepareSingleData().getData());
+
+    }
+
+    private static DataResult<AcademicPersonal>prepareSingleData(){
+        return new SuccessDataResult<>(
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",
+                                        AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                                new Date(2000, Calendar.DECEMBER,5),
+                                new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456"))));
+
+
+    }
+
+    private static DataResult<AcademicPersonal>prepareUpdateData(){
+        return new SuccessDataResult<>(
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",
+                                        AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                                new Date(2000, Calendar.DECEMBER,5),
+                                new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456"))));
+
+
+    }
+
+    private static DataResult<AcademicPersonal>prepareCreatedData(){
+        return new SuccessDataResult<>(
+                new AcademicPersonal(1, AcademicRate.DOC,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",
+                                        AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                                new Date(2000, Calendar.DECEMBER,5),
+                                new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456"))));
+
+    }
+
+
     private DataResult<List<AcademicPersonal>> prepareDataList(){
         List<AcademicPersonal> academicPersonals = new ArrayList<>();
         academicPersonals.add(new AcademicPersonal(1, AcademicRate.DOC,
@@ -66,4 +141,10 @@ public class AcademicPersonalsControllerTest {
         return new SuccessDataResult<>(academicPersonals);
     }
 
+    private  static  final int academicPersonelId = 2;
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
 }
