@@ -1,6 +1,8 @@
 package com.mb.software.ecampus.api.controllers;
 
 import com.mb.software.ecampus.business.abstracts.AcademicUnitService;
+import com.mb.software.ecampus.core.utilities.results.Result;
+import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
@@ -54,6 +56,13 @@ public class AcademicUnitsControllerTest {
         return new SuccessDataResult<>(
                 new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
 
+    }
+
+    @Test
+    public void testDeleteIsWorkingProperly() {
+        when(academicUnitService.delete(academicUnitId)).thenReturn(new SuccessResult());
+        ResponseEntity<Result> response = academicUnitsController.delete(academicUnitId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     private static DataResult<AcademicUnit> prepareCreatedData() {
