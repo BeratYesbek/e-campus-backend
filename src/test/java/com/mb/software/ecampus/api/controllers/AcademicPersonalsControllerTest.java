@@ -66,6 +66,14 @@ public class AcademicPersonalsControllerTest {
 
     }
 
+    @Test
+    public void testDeleteByIdIsWorkingProperly(){
+        when(service.delete(academicPersonelId)).thenReturn(new SuccessResult());
+        ResponseEntity<Result> response = academicPersonalsController.delete(academicPersonelId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+
+    }
+
     private static DataResult<AcademicPersonal>prepareUpdateData(){
         return new SuccessDataResult<>(
                 new AcademicPersonal(2, AcademicRate.PROFESSOR,
