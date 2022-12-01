@@ -57,6 +57,28 @@ public class AcademicPersonalsControllerTest {
         assertEquals(response.getBody().getData(),prepareCreatedData().getData());
     }
 
+    @Test
+    public void testUpdateIsWorkingProperly(){
+        when(service.update(any())).thenReturn(prepareUpdateData());
+        ResponseEntity<DataResult<AcademicPersonal>> response =academicPersonalsController.update(academicPersonelId,any());
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+        assertEquals(response.getBody().getData(),prepareUpdateData().getData());
+
+    }
+
+    private static DataResult<AcademicPersonal>prepareUpdateData(){
+        return new SuccessDataResult<>(
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",
+                                        AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                                new Date(2000, Calendar.DECEMBER,5),
+                                new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456"))));
+
+
+    }
+
     private static DataResult<AcademicPersonal>prepareCreatedData(){
         return new SuccessDataResult<>(
                 new AcademicPersonal(1, AcademicRate.DOC,
@@ -89,4 +111,5 @@ public class AcademicPersonalsControllerTest {
         return new SuccessDataResult<>(academicPersonals);
     }
 
+    private  static  final int academicPersonelId = 2;
 }
