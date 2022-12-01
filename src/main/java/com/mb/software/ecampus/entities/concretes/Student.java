@@ -18,16 +18,16 @@ public class Student extends DbEntity {
     @Id
     @Column(name = "student_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public int id;
 
     @ManyToOne
     @JoinColumn(name = "academic_department_id")
-    private AcademicDepartment academicDepartment;
+    public AcademicDepartment academicDepartment;
 
     @Column(name = "average_success")
-    private float averageSuccess;
+    public float averageSuccess;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    public User user;
 }

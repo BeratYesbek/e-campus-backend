@@ -14,14 +14,14 @@ import java.util.List;
 @RequestMapping("/api/students")
 public class StudentsController {
 
-    private final StudentService studentService;
+    public final StudentService studentService;
 
     public StudentsController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @PostMapping
-    private ResponseEntity<DataResult<Student>> add(@RequestBody Student student) throws Exception {
+    public ResponseEntity<DataResult<Student>> add(@RequestBody Student student) throws Exception {
         DataResult result = studentService.add(student);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.CREATED);
@@ -30,7 +30,7 @@ public class StudentsController {
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<DataResult<Student>> update(@PathVariable int id, @RequestBody Student student) {
+    public ResponseEntity<DataResult<Student>> update(@PathVariable int id, @RequestBody Student student) {
         DataResult result = studentService.update(student);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -39,7 +39,7 @@ public class StudentsController {
     }
 
     @DeleteMapping("/{id}")
-    private ResponseEntity<Result> delete(@PathVariable int id) {
+    public ResponseEntity<Result> delete(@PathVariable int id) {
         Result result = studentService.delete(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -48,7 +48,7 @@ public class StudentsController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<DataResult<Student>> getById(@PathVariable int id) {
+    public ResponseEntity<DataResult<Student>> getById(@PathVariable int id) {
         DataResult result = studentService.getById(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -57,7 +57,7 @@ public class StudentsController {
     }
 
     @GetMapping
-    private ResponseEntity<DataResult<List<Student>>> getAll() {
+    public ResponseEntity<DataResult<List<Student>>> getAll() {
         DataResult result = studentService.getAll();
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);

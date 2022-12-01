@@ -30,6 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
@@ -42,13 +43,14 @@ public class StudentsControllerTest {
     private StudentsController studentController;
 
     @Test
+    public void testAddMethodIsWorkingProperly(){}
+
+    @Test
     public void testGetAllMethodIsWorkingProperly(){
         when(service.getAll()).thenReturn(prepareDataList());
         ResponseEntity<DataResult<List<Student>>> response = studentController.getAll();
         assertEquals(response.getBody().getData(), prepareDataList().getData());
     }
-
-
 
     @Test
     public void testUpdateIsWorkingProperly() throws Exception {
@@ -58,13 +60,52 @@ public class StudentsControllerTest {
         assertEquals(response.getBody().getData(),prepareUpdateData().getData());
     }
 
+    @Test
+    public void testDeleteIsWorkingProperly(){
+        when(service.delete(studentId)).thenReturn(new SuccessResult());
+        ResponseEntity<Result> response = studentController.delete(studentId);
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+    }
+
+    @Test
+    public void testGetByIdIsWorkingProperly(){
+        when(service.getById(studentId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<Student>> response =studentController.getById(studentId);
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+        assertEquals(response.getBody().getData(), prepareSingleData().getData());
+    }
+
     private DataResult<Student> prepareUpdateData() {
-        return null;
+
+        return new SuccessDataResult<>(
+                new Student(
+                        2,
+                        new AcademicDepartment(
+                                1,
+                                "Software Engineering",
+                                new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3,
+                        new User(2,"shmsacr","sehmus@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456")
+                )
+        );
+    }
+
+    private static DataResult<Student> prapareCreatedData(){
+        return new SuccessDataResult<>(
+                new Student(1,
+                        new AcademicDepartment(1,"Computer Engineering",
+                                new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)),
+                        3,
+                        new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456"))
+        );
     }
 
     private DataResult<List<Student>> prepareDataList() {
-        return null;
+        List<Student> students = new ArrayList<>();
+        students.add( new Student(2,new AcademicDepartment(1,"Software Engineering",new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(2,"shmsacr","sehmus@gmail.com",new Date(2000,01,12),new Date(2000,12,01),"123456")));
+        students.add( new Student(1,new AcademicDepartment(1,"Computer Engineering",new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456")));
+        return new SuccessDataResult<>(students);
     }
+
     private static DataResult<Student> prepareSingleData(){
         return new SuccessDataResult<>(
                 new Student(
@@ -72,8 +113,14 @@ public class StudentsControllerTest {
                         new AcademicDepartment(1,"Computer Engineering",
                         new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)),
                         3,
-                        new User())
+                        new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456"))
         );
+    }
+
+    private static final int studentId =1;
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
     }
 }
 
