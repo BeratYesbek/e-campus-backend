@@ -46,7 +46,30 @@ public class AcademicPersonalsControllerTest {
         when(service.getAll()).thenReturn(prepareDataList());
         ResponseEntity<DataResult<List<AcademicPersonal>>> response = academicPersonalsController.getAll();
         assertEquals(response.getBody().getData(),prepareDataList());
+
     }
+
+    @Test
+    public void testAddMethodIsWorkingProperly() throws Exception {
+        when(service.add(any())).thenReturn(prepareCreatedData());
+        ResponseEntity<DataResult<AcademicPersonal>> response =academicPersonalsController.add(any());
+        assertEquals(response.getStatusCode(),HttpStatus.CREATED);
+        assertEquals(response.getBody().getData(),prepareCreatedData().getData());
+    }
+
+    private static DataResult<AcademicPersonal>prepareCreatedData(){
+        return new SuccessDataResult<>(
+                new AcademicPersonal(1, AcademicRate.DOC,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",
+                                        AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                                new Date(2000, Calendar.DECEMBER,5),
+                                new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456"))));
+
+    }
+
+
     private DataResult<List<AcademicPersonal>> prepareDataList(){
         List<AcademicPersonal> academicPersonals = new ArrayList<>();
         academicPersonals.add(new AcademicPersonal(1, AcademicRate.DOC,
