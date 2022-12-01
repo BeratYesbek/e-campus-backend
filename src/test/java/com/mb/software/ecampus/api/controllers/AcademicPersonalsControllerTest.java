@@ -45,7 +45,7 @@ public class AcademicPersonalsControllerTest {
     public  void testGetAllMethodUsWorkingProperly(){
         when(service.getAll()).thenReturn(prepareDataList());
         ResponseEntity<DataResult<List<AcademicPersonal>>> response = academicPersonalsController.getAll();
-        assertEquals(response.getBody().getData(),prepareDataList());
+        assertEquals(response.getBody().getData(),prepareDataList().getData());
 
     }
 
@@ -71,6 +71,28 @@ public class AcademicPersonalsControllerTest {
         when(service.delete(academicPersonelId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = academicPersonalsController.delete(academicPersonelId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
+
+    }
+
+    @Test
+    public void testGetByIdIsWorkingProperly(){
+        when(service.getById(academicPersonelId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<AcademicPersonal>> response = academicPersonalsController.getById(academicPersonelId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getData(), prepareSingleData().getData());
+
+    }
+
+    private static DataResult<AcademicPersonal>prepareSingleData(){
+        return new SuccessDataResult<>(
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",
+                                        AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                                new Date(2000, Calendar.DECEMBER,5),
+                                new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456"))));
+
 
     }
 
@@ -120,4 +142,9 @@ public class AcademicPersonalsControllerTest {
     }
 
     private  static  final int academicPersonelId = 2;
+
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
 }
