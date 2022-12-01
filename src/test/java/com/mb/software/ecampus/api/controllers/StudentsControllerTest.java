@@ -106,8 +106,18 @@ public class StudentsControllerTest {
 
     private DataResult<List<Student>> prepareDataList() {
         List<Student> students = new ArrayList<>();
-        students.add( new Student(2,new AcademicDepartment(1,"Software Engineering",new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(2,"shmsacr","sehmus@gmail.com",new Date(2000,01,12),new Date(2000,12,01),"123456")));
-        students.add( new Student(1,new AcademicDepartment(1,"Computer Engineering",new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456")));
+        students.add( new Student(
+                2,
+                new AcademicDepartment(
+                        1,
+                        "Software Engineering",
+                        new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(2,"shmsacr","sehmus@gmail.com",new Date(2000,01,12),new Date(2000,12,01),"123456")));
+        students.add( new Student(
+                1,
+                new AcademicDepartment(
+                        1,
+                        "Computer Engineering",
+                        new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456")));
         return new SuccessDataResult<>(students);
     }
 
