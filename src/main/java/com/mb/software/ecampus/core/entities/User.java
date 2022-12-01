@@ -31,7 +31,6 @@ public class User extends DbEntity {
     private String email;
 
     @Column(name = "birth_date")
-    @NotNull
     private Date birth_date;
 
     @Column(name = "created_at")
