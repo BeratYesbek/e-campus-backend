@@ -52,17 +52,33 @@ public class AcademicUnitsControllerTest {
         assertEquals(response.getBody().getData(), prepareUpdateData().getData());
     }
 
-    private static DataResult<AcademicUnit> prepareUpdateData(){
-        return new SuccessDataResult<>(
-                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
-
-    }
 
     @Test
     public void testDeleteIsWorkingProperly() {
         when(academicUnitService.delete(academicUnitId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = academicUnitsController.delete(academicUnitId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
+    }
+
+    @Test
+    public void testGetByIdIsWorkingProperly() {
+        when(academicUnitService.getById(academicUnitId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<AcademicUnit>> response = academicUnitsController.getById(academicUnitId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getData(), prepareSingleData().getData());
+    }
+
+    private static DataResult<AcademicUnit> prepareSingleData(){
+        return new SuccessDataResult<>(
+                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
+
+    }
+
+
+    private static DataResult<AcademicUnit> prepareUpdateData(){
+        return new SuccessDataResult<>(
+                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
+
     }
 
     private static DataResult<AcademicUnit> prepareCreatedData() {
