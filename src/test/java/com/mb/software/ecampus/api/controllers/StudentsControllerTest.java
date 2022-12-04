@@ -60,7 +60,7 @@ public class StudentsControllerTest {
     @Test
     public void testUpdateIsWorkingProperly() throws Exception {
         when(service.update(any())).thenReturn(prepareUpdateData());
-        ResponseEntity<DataResult<Student>> response = studentController.add(any());
+        ResponseEntity<DataResult<Student>> response = studentController.update(studentId,any());
         assertEquals(response.getStatusCode(),HttpStatus.OK);
         assertEquals(response.getBody().getData(),prepareUpdateData().getData());
     }
@@ -84,13 +84,11 @@ public class StudentsControllerTest {
 
         return new SuccessDataResult<>(
                 new Student(
-                        2,
+                        1,
                         new AcademicDepartment(
                                 1,
-                                "Software Engineering",
-                                new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3,
-                        new User(2,"shmsacr","sehmus@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456")
-                )
+                                "Computer Engineering",
+                                new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456") )
         );
     }
 
