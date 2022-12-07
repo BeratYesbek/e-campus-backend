@@ -5,13 +5,13 @@ import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 import static org.mockito.Mockito.*;
 
 import com.mb.software.ecampus.business.abstracts.LessonService;
+import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
-import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
-import com.mb.software.ecampus.entities.concretes.AcademicUnit;
-import com.mb.software.ecampus.entities.concretes.Lesson;
+import com.mb.software.ecampus.entities.concretes.*;
+import com.mb.software.ecampus.entities.concretes.enums.AcademicRate;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,6 +28,7 @@ import javax.xml.crypto.Data;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
@@ -58,21 +59,57 @@ public class LessonsControllerTest {
         when(service.update(any())).thenReturn(prepareUpdateData());
         ResponseEntity<DataResult<Lesson>> response = lessonsController.update(lessonId,any());
         assertEquals(response.getStatusCode(),HttpStatus.OK);
-        assertEquals(response.getBody().getData(),prepareUpdateData());
+        assertEquals(response.getBody().getData(),prepareUpdateData().getData());
+    }
+
+    @Test
+    public void testDeleteIsWorkingProperly(){
+        when(service.delete(lessonId)).thenReturn(new SuccessResult());
+        ResponseEntity<Result> response = lessonsController.delete(lessonId);
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+    }
+
+    @Test
+    public void testGetByIdIsWorkingProperly(){
+        when(service.getById(lessonId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<Lesson>> response =lessonsController.getById(lessonId);
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+        assertEquals(response.getBody().getData(),prepareSingleData().getData());
+    }
+
+    private static DataResult<Lesson> prepareSingleData() {
+        return new SuccessDataResult<>(
+                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
+                )
+        );
     }
 
 
-    private DataResult<Lesson> prepareUpdateData() {
-        return null;
+    private static DataResult<Lesson> prepareUpdateData() {
+        return new SuccessDataResult<>(
+                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
+                )
+        );
     }
 
-    private DataResult<Lesson> prepareCreatedData() {
-        return null;
+    private static DataResult<Lesson> prepareCreatedData() {
+        return new SuccessDataResult<>(
+                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
+                )
+        );
     }
 
-    private DataResult<List<Lesson>> prepareDataList() {
-        return null;
+    private static DataResult<List<Lesson>> prepareDataList() {
+        List<Lesson> lessons = new ArrayList<>();
+        lessons.add(new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
+        ));
+        lessons.add(new Lesson(2,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
+        ));
+        return new SuccessDataResult<>(lessons);
     }
-
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
     private static final int lessonId = 1;
 }
