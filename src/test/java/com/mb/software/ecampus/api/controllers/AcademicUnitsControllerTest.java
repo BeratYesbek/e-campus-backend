@@ -23,6 +23,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -35,7 +38,12 @@ public class AcademicUnitsControllerTest {
 
     @InjectMocks
     private AcademicUnitsController academicUnitsController;
-
+    @Test
+    public void testGetAllMethodIsWorkingProperly() {
+        when(academicUnitService.getAll()).thenReturn(prepareDataList());
+        ResponseEntity<DataResult<List<AcademicUnit>>> response = academicUnitsController.getAll();
+        assertEquals(response.getBody().getData(), prepareDataList().getData());
+    }
     @Test
     public void testAddMethodWorkingProperly() throws Exception {
         when(academicUnitService.add(any())).thenReturn(prepareCreatedData());
@@ -52,11 +60,6 @@ public class AcademicUnitsControllerTest {
         assertEquals(response.getBody().getData(), prepareUpdateData().getData());
     }
 
-    private static DataResult<AcademicUnit> prepareUpdateData(){
-        return new SuccessDataResult<>(
-                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
-
-    }
 
     @Test
     public void testDeleteIsWorkingProperly() {
@@ -65,9 +68,36 @@ public class AcademicUnitsControllerTest {
         assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    @Test
+    public void testGetByIdIsWorkingProperly() {
+        when(academicUnitService.getById(academicUnitId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<AcademicUnit>> response = academicUnitsController.getById(academicUnitId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getData(), prepareSingleData().getData());
+    }
+
+    private static DataResult<AcademicUnit> prepareSingleData(){
+        return new SuccessDataResult<>(
+                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
+
+    }
+
+
+    private static DataResult<AcademicUnit> prepareUpdateData(){
+        return new SuccessDataResult<>(
+                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
+
+    }
+
     private static DataResult<AcademicUnit> prepareCreatedData() {
         return new SuccessDataResult<>(
                 new AcademicUnit(1, "Engineering", AcademicType.FACULTY));
+    }
+    private DataResult<List<AcademicUnit>> prepareDataList(){
+        List<AcademicUnit> academicUnits = new ArrayList<>();
+        academicUnits.add(new AcademicUnit(1, "Engineering", AcademicType.FACULTY));
+        academicUnits.add(new AcademicUnit(2, "Medicine", AcademicType.FACULTY));
+        return new SuccessDataResult<>(academicUnits);
     }
 
     private static final int academicUnitId = 1;
