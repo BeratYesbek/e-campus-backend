@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.repositories;
+package com.mb.software.ecampus.repositories.mocking;
 
 import com.mb.software.ecampus.dataAccess.dao.AcademicUnitDao;
 import com.mb.software.ecampus.entities.concretes.AcademicUnit;
