@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("api/user_operation_claims")
 public class UserOperationClaimsController {
 
-    private final UserOperationClaimService userOperationClaimService;
+    public final UserOperationClaimService userOperationClaimService;
 
     public UserOperationClaimsController(UserOperationClaimService userOperationClaimService) {
         this.userOperationClaimService = userOperationClaimService;
