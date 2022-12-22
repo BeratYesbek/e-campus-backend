@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.core.crossCuttingConcerns.logging.details;
+package com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details;
 
 import lombok.Getter;
 

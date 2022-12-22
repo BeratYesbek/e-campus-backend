@@ -17,7 +17,7 @@ public class AcademicDepartmentsController extends BaseController {
     private final AcademicDepartmentService academicDepartmentService;
 
     public AcademicDepartmentsController(AcademicDepartmentService academicDepartmentService) {
-        this.academicDepartmentService = academicDepartmentService;
+            this.academicDepartmentService = academicDepartmentService;
     }
 
     @PostMapping

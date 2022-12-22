@@ -1,11 +1,10 @@
 package com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices;
 
 import com.mb.software.ecampus.core.crossCuttingConcerns.logging.BaseLoggingService;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogDetail;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogErrorDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details.LogDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details.LogErrorDetail;
 import com.mb.software.ecampus.core.dataAccess.LoggingDao;
 import com.mb.software.ecampus.core.entities.DbLog;
-import lombok.extern.java.Log;
 import org.springframework.boot.logging.LogLevel;
 
 public class DbLogging extends BaseLoggingService {

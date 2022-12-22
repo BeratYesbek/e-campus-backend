@@ -3,8 +3,8 @@ package com.mb.software.ecampus.core.entities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogDetail;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogErrorDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details.LogDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details.LogErrorDetail;
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.*;
 import org.springframework.boot.logging.LogLevel;

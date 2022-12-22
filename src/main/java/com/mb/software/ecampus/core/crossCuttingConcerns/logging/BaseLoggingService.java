@@ -1,7 +1,7 @@
 package com.mb.software.ecampus.core.crossCuttingConcerns.logging;
 
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogDetail;
-import com.mb.software.ecampus.core.crossCuttingConcerns.logging.details.LogErrorDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details.LogDetail;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.details.LogErrorDetail;
 
 public abstract class BaseLoggingService {
 
