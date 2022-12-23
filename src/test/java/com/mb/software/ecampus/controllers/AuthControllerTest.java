@@ -1,5 +1,7 @@
-package com.mb.software.ecampus.api.controllers;
+package com.mb.software.ecampus.controllers;
 import static org.mockito.Mockito.*;
+
+import com.mb.software.ecampus.api.controllers.AuthController;
 import com.mb.software.ecampus.business.abstracts.AuthService;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.security.jwt.token.Token;

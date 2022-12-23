@@ -1,4 +1,5 @@
-package com.mb.software.ecampus.api.controllers;
+package com.mb.software.ecampus.controllers;
+import com.mb.software.ecampus.api.controllers.AcademicPersonalsController;
 import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 
 import static org.mockito.Mockito.*;

@@ -29,5 +29,4 @@ public class Lesson extends DbEntity {
 
     @Column(name = "name")
     private String name;
-
 }

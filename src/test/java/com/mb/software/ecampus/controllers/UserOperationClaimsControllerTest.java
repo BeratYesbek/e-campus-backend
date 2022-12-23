@@ -1,7 +1,8 @@
-package com.mb.software.ecampus.api.controllers;
+package com.mb.software.ecampus.controllers;
 
 import static org.mockito.Mockito.*;
 
+import com.mb.software.ecampus.api.controllers.UserOperationClaimsController;
 import com.mb.software.ecampus.business.abstracts.UserOperationClaimService;
 import com.mb.software.ecampus.core.entities.OperationClaim;
 import com.mb.software.ecampus.core.entities.User;
