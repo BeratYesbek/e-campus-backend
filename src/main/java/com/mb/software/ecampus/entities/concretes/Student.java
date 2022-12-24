@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -26,6 +27,24 @@ public class Student extends DbEntity {
 
     @Column(name = "average_success")
     public float averageSuccess;
+
+    @Column(name = "school_number")
+    public String schoolNumber;
+
+    @Column(name = "degree_type")
+    public String degreeType;
+
+    @Column(name = "year")
+    public int year;
+
+    @Column(name = "attend_date")
+    public Date attendDate;
+
+    @Column(name = "registration_freeze")
+    public Date registrationFreeze;
+
+    @Column(name = "punishment_status")
+    public boolean punishmentStatus;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

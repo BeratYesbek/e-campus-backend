@@ -28,6 +28,9 @@ public class AcademicDepartment extends DbEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "academic_unit_id")
     private AcademicUnit academicUnit;
