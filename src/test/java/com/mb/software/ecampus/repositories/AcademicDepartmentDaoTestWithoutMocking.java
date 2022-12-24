@@ -34,4 +34,12 @@ public class AcademicDepartmentDaoTestWithoutMocking {
 
     }
 
+    @Test
+    public void testDelete(){
+        AcademicDepartment academicDepartment = new AcademicDepartment(0,"Software Engineering",
+                new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY));
+        AcademicDepartment addedAcademicDepartment = academicDepartmentDao.save(academicDepartment);
+        academicDepartmentDao.deleteById(addedAcademicDepartment.getId());
+    }
+
 }
