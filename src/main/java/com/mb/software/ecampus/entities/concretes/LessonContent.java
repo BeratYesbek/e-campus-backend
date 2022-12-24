@@ -1,5 +1,6 @@
 package com.mb.software.ecampus.entities.concretes;
 
+import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "lesson_contents")
-public class LessonContent {
+public class LessonContent extends DbEntity {
 
     @Id
     @Column(name = "lesson_content_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "lesson_id")
+    private Lesson lesson;
 
     @Column(name = "title,")
     private String title;
@@ -26,9 +31,4 @@ public class LessonContent {
 
     @Column(name = "week")
     private int week;
-
-    @ManyToOne
-    @JoinColumn(name = "lesson_id")
-    private Lesson lesson;
-
 }
