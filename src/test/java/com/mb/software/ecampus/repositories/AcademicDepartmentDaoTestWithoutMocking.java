@@ -42,4 +42,15 @@ public class AcademicDepartmentDaoTestWithoutMocking {
         academicDepartmentDao.deleteById(addedAcademicDepartment.getId());
     }
 
+    @Test
+    public void testFinById(){
+        AcademicDepartment academicDepartment = new AcademicDepartment(0,"Software Engineering",
+                new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY));
+        AcademicDepartment addedAcademicDepartment = academicDepartmentDao.save(academicDepartment);
+        AcademicDepartment foundAcademicUnit = academicDepartmentDao.findById(addedAcademicDepartment.getId()).get();
+        assertEquals(addedAcademicDepartment.getId(),foundAcademicUnit.getId());
+    }
+
+
+
 }
