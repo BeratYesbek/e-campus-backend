@@ -39,6 +39,21 @@ public class User extends DbEntity {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "province")
+    private String province;
+
+    @Column(name = "country")
+    private String country;
+
  /*   @OneToMany(mappedBy = "user")
     private List<Student> students;
 
