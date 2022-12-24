@@ -17,7 +17,7 @@ public class AcademicUnit extends DbEntity {
     @Id
     @Column(name = "academic_unit_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     @Column(name = "name")
     private String name;

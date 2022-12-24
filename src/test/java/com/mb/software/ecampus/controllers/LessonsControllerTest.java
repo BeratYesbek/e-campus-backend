@@ -1,11 +1,10 @@
 package com.mb.software.ecampus.controllers;
 
 import com.mb.software.ecampus.api.controllers.LessonsController;
-import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 
 import static org.mockito.Mockito.*;
 
-import com.mb.software.ecampus.business.abstracts.LessonService;
+import com.mb.software.ecampus.core.business.abstracts.LessonService;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
@@ -15,16 +14,12 @@ import com.mb.software.ecampus.entities.concretes.*;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicRate;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import javax.xml.crypto.Data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,6 +31,9 @@ import java.util.List;
 public class LessonsControllerTest {
     @Mock
     private LessonService service;
+    static Lesson lesson = new Lesson(0,new AcademicPersonal(),new AcademicDepartment(),"math","bl01","description",3,5,1,true);
+    static Lesson lesson1 = new Lesson(0,new AcademicPersonal(),new AcademicDepartment(),"math","bl01","description",3,5,1,true);
+
 
     @InjectMocks
     private LessonsController lessonsController;
@@ -80,32 +78,27 @@ public class LessonsControllerTest {
 
     private static DataResult<Lesson> prepareSingleData() {
         return new SuccessDataResult<>(
-                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-                )
+                lesson
         );
     }
 
 
     private static DataResult<Lesson> prepareUpdateData() {
         return new SuccessDataResult<>(
-                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-                )
+                lesson
         );
     }
 
     private static DataResult<Lesson> prepareCreatedData() {
         return new SuccessDataResult<>(
-                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-                )
+                lesson
         );
     }
 
     private static DataResult<List<Lesson>> prepareDataList() {
         List<Lesson> lessons = new ArrayList<>();
-        lessons.add(new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-        ));
-        lessons.add(new Lesson(2,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-        ));
+        lessons.add(lesson);
+        lessons.add(lesson1);
         return new SuccessDataResult<>(lessons);
     }
     @Before

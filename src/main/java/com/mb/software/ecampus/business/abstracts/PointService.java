@@ -1,8 +1,7 @@
 package com.mb.software.ecampus.business.abstracts;
 
 import com.mb.software.ecampus.business.abstracts.common.ServiceRepository;
-import com.mb.software.ecampus.entities.concretes.Lesson;
+import com.mb.software.ecampus.entities.concretes.Point;
 
-
-public interface LessonService extends ServiceRepository<Lesson> {
+public interface PointService extends ServiceRepository<Point> {
 }
