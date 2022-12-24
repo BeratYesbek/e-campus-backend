@@ -23,11 +23,14 @@ public class AcademicDepartmentDaoTestWithoutMocking {
     @Autowired
     public AcademicDepartmentDao academicDepartmentDao;
 
+    AcademicDepartment academicDepartment =
+            new AcademicDepartment(0,"Software Engineering",null,
+                    new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY));
+
+
     @Test
     public void testSave(){
-        AcademicDepartment academicDepartment =
-                new AcademicDepartment(0,"Software Engineering",
-                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY));
+
         AcademicDepartment addedAcademicDepartment = academicDepartmentDao.save(academicDepartment);
         assertNotNull(addedAcademicDepartment);
 
@@ -36,16 +39,12 @@ public class AcademicDepartmentDaoTestWithoutMocking {
 
     @Test
     public void testDelete(){
-        AcademicDepartment academicDepartment = new AcademicDepartment(0,"Software Engineering",
-                new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY));
         AcademicDepartment addedAcademicDepartment = academicDepartmentDao.save(academicDepartment);
         academicDepartmentDao.deleteById(addedAcademicDepartment.getId());
     }
 
     @Test
     public void testFinById(){
-        AcademicDepartment academicDepartment = new AcademicDepartment(0,"Software Engineering",
-                new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY));
         AcademicDepartment addedAcademicDepartment = academicDepartmentDao.save(academicDepartment);
         AcademicDepartment foundAcademicUnit = academicDepartmentDao.findById(addedAcademicDepartment.getId()).get();
         assertEquals(addedAcademicDepartment.getId(),foundAcademicUnit.getId());
