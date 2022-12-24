@@ -32,4 +32,18 @@ public class AcademicPersonal extends DbEntity {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    @Column(name = "nnumber_of_theses")
+    private int numberOfTheses;
+
+    @Column(name = "bachooler_degree")
+    private String bachoolerDegree;
+
+    @Column(name = "master_degree")
+    private String masterDegree;
+
+    @Column(name = "doctorate_degree")
+    private String doctorateDegree;
+
+    @Column(name = "institutional_phone_number")
+    private String institutionalPhoneNumber;
 }

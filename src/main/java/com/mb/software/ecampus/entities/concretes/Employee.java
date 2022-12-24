@@ -41,6 +41,10 @@ public class Employee extends DbEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "salary")
+    private Long salary;
+
+
     /*@OneToMany(mappedBy = "employee")
     private List<AcademicPersonal> academicPersonals;*/
 
