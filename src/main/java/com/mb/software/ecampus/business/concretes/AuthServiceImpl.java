@@ -1,6 +1,7 @@
 package com.mb.software.ecampus.business.concretes;
 
 import com.mb.software.ecampus.business.abstracts.AuthService;
+import com.mb.software.ecampus.business.abstracts.OperationClaimService;
 import com.mb.software.ecampus.business.abstracts.UserOperationClaimService;
 import com.mb.software.ecampus.business.abstracts.UserService;
 import com.mb.software.ecampus.core.entities.OperationClaim;
@@ -13,21 +14,24 @@ import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.ErrorDataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.entities.dtos.UserLoginDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;
+    private final OperationClaimService operationClaimService;
     private final UserOperationClaimService userOperationClaimService;
     private final JwtHelper jwtHelper;
 
 
-    public AuthServiceImpl(UserService userService, UserOperationClaimService userOperationClaimService, JwtHelper jwtHelper) {
+    public AuthServiceImpl(UserService userService, OperationClaimService operationClaimService, UserOperationClaimService userOperationClaimService, JwtHelper jwtHelper) {
         this.userService = userService;
+        this.operationClaimService = operationClaimService;
         this.userOperationClaimService = userOperationClaimService;
         this.jwtHelper = jwtHelper;
     }
@@ -40,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
             if (result) {
                 DataResult<List<UserOperationClaim>> roleResult = userOperationClaimService.getByUserId(existingUserResult.getData().getId());
                 List<String> roles = roleResult.getData().stream().map(t -> t.getOperationClaim().getName()).toList();
-                Token token = jwtHelper.createToken(existingUserResult.getData(),  roles.stream().toArray(String[]::new),"" );
+                Token token = jwtHelper.createToken(existingUserResult.getData(), roles.stream().toArray(String[]::new), "");
                 return new SuccessDataResult<>(token, "User has been logged in successfully");
             } else {
                 return new ErrorDataResult<>(null, "Wrong Credentials");
@@ -57,13 +61,17 @@ public class AuthServiceImpl implements AuthService {
             return new ErrorDataResult<>(null, "User exists");
         }
         user.setPassword(PasswordHelper.hashPassword(user.getPassword()));
-        DataResult<User> createdUserResult = userService.add(user);
-        DataResult<UserOperationClaim> operationClaimDataResult = userOperationClaimService.add(new UserOperationClaim(0, createdUserResult.getData(), new OperationClaim(1, "")));
-        String[] roles = new String[]{operationClaimDataResult.getData().getOperationClaim().getName()};
-        Token token = jwtHelper.createToken(createdUserResult.getData(), roles, "");
-        token.setUser(createdUserResult.getData());
-        return new SuccessDataResult<>(token);
-
-
+        DataResult<OperationClaim> operationClaim = operationClaimService.getByDefaultRole();
+        if (operationClaim.isSuccess()) {
+            DataResult<User> createdUserResult = userService.add(user);
+            DataResult<UserOperationClaim> operationClaimDataResult = userOperationClaimService.add(
+                    new UserOperationClaim(0, createdUserResult.getData(), operationClaim.getData())
+            );
+            String[] roles = new String[]{operationClaimDataResult.getData().getOperationClaim().getName()};
+            Token token = jwtHelper.createToken(createdUserResult.getData(), roles, "");
+            token.setUser(createdUserResult.getData());
+            return new SuccessDataResult<>(token);
+        }
+        return new ErrorDataResult<>(null, "Unexpected issue");
     }
 }

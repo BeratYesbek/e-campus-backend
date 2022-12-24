@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.mb.software'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = "16"
 test {
     useJUnitPlatform()
 }
@@ -65,3 +65,4 @@ tasks.named('bootBuildImage') {
     builder = 'paketobuildpacks/builder:tiny'
     environment = ['BP_NATIVE_IMAGE': 'true']
 }
+targetCompatibility = JavaVersion.VERSION_16

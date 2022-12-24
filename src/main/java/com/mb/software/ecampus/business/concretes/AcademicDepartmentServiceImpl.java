@@ -10,6 +10,7 @@ import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.dataAccess.dao.AcademicDepartmentDao;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import javax.security.sasl.AuthenticationException;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AcademicDepartmentServiceImpl implements AcademicDepartmentService {
 
     private final AcademicDepartmentDao academicDepartmentDao;
@@ -43,6 +45,8 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
         return new SuccessResult("Academic department has been deleted");
     }
 
+    @SecurityOperation(security = {"User", "Admin"})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<AcademicDepartment> getById(int id) {
         return new SuccessDataResult<>(academicDepartmentDao.findById(id).get());
