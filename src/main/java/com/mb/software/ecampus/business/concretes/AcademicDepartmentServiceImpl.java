@@ -45,6 +45,8 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
         return new SuccessResult("Academic department has been deleted");
     }
 
+    @SecurityOperation(security = {"User", "Admin"})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<AcademicDepartment> getById(int id) {
         return new SuccessDataResult<>(academicDepartmentDao.findById(id).get());
