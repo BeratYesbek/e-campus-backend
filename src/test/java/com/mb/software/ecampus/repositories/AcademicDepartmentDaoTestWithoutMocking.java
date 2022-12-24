@@ -51,6 +51,13 @@ public class AcademicDepartmentDaoTestWithoutMocking {
         assertEquals(addedAcademicDepartment.getId(),foundAcademicUnit.getId());
     }
 
+    @Test
+
+    public  void testFindAll(){
+        Collection<AcademicDepartment> academicDepartments = academicDepartmentDao.findAll();
+        assertNotNull(academicDepartments);
+    }
+
 
 
 }
