@@ -42,4 +42,18 @@ public class AcademicPersonalDaoTestWithoutMocking {
         assertEquals(academicPersonal,addesAcademicPersonal);
     }
 
+   @Test
+    public void testFindById(){
+        AcademicPersonal academicPersonal = new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                new Employee(1,
+                        new EmployeeDepartment(1,"Sehmus"),
+                        new AcademicUnit(1, "Engineering Faculty",
+                                AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                        new Date(2000, Calendar.DECEMBER,5),
+                        new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456")));
+        AcademicPersonal addedAcademicPersonal = academicPersonalDao.save(academicPersonal);
+        AcademicPersonal foundAcademicPersonal = academicPersonalDao.findById(addedAcademicPersonal.getId()).get();
+        assertEquals(addedAcademicPersonal.getId(),foundAcademicPersonal.getId());
+   }
+
 }
