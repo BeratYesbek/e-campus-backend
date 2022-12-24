@@ -11,5 +11,7 @@ public final class SecurityRole {
     public static final String STUDENT = "STUDENT";
     public static final String USER = "USER";
     public static final String PROFESSOR = "PROFESSOR";
+    public static final String STUDENT_AFFAIRS = "STUDENT_AFFAIRS";
     public static final String HUMAN_RESOURCES = "HUMAN_RESOURCES";
+
 }

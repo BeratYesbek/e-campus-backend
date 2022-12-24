@@ -67,7 +67,7 @@ public class StudentsControllerTest {
     }
 
     @Test
-    public void testDeleteIsWorkingProperly(){
+    public void testDeleteIsWorkingProperly() throws Exception {
         when(service.delete(studentId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = studentController.delete(studentId);
         assertEquals(response.getStatusCode(),HttpStatus.OK);

@@ -39,7 +39,7 @@ public class StudentsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id) {
+    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
         Result result = studentService.delete(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);

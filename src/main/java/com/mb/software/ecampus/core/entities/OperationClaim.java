@@ -20,7 +20,7 @@ public class OperationClaim extends DbEntity {
     @Column(name = "operation_claim_id")
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "NVARCHAR(MAX)")
     private String name;
 
 }

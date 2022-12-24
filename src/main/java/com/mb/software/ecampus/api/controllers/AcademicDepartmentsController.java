@@ -31,7 +31,7 @@ public class AcademicDepartmentsController extends BaseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id) {
+    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
         return new ResponseEntity<>(academicDepartmentService.delete(id), HttpStatus.OK);
     }
 

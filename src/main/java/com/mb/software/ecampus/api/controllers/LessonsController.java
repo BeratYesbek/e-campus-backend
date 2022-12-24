@@ -32,7 +32,7 @@ public class LessonsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id){
+    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
         return new ResponseEntity<>(lessonService.delete(id), HttpStatus.OK);
     }
 

@@ -62,7 +62,7 @@ public class AcademicDepartmentsControllerTest {
     }
 
     @Test
-    public void testDeleteIsWorkingProperly() {
+    public void testDeleteIsWorkingProperly() throws Exception {
         when(service.delete(academicUnitId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = academicDepartmentsController.delete(academicUnitId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
