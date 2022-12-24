@@ -1,6 +1,6 @@
-package com.mb.software.ecampus.business.concretes;
+package com.mb.software.ecampus.core.business.concretes;
 
-import com.mb.software.ecampus.business.abstracts.AcademicUnitService;
+import com.mb.software.ecampus.core.business.abstracts.AcademicUnitService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
