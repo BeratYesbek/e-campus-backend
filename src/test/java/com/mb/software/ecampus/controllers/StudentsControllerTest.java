@@ -1,11 +1,10 @@
 package com.mb.software.ecampus.controllers;
 
 import com.mb.software.ecampus.api.controllers.StudentsController;
-import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 
 import static org.mockito.Mockito.*;
 
-import com.mb.software.ecampus.business.abstracts.StudentService;
+import com.mb.software.ecampus.core.business.abstracts.StudentService;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
@@ -16,19 +15,14 @@ import com.mb.software.ecampus.entities.concretes.AcademicUnit;
 import com.mb.software.ecampus.entities.concretes.Student;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import javax.xml.crypto.Data;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +33,9 @@ public class StudentsControllerTest {
 
     @Mock
     private StudentService service;
+    static Student student = new Student(1,new AcademicDepartment(),3,"191","lisans",3,new Date(2022,23,12),new Date(2022,23,12),false,new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,23),"123456","0538","female","ankara","Ankara","Türkiye"));
+    static Student student1 = new Student(2,new AcademicDepartment(),3,"191","lisans",3,new Date(2022,23,12),new Date(2022,23,12),false,new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,23),"123456","0538","female","ankara","Ankara","Türkiye"));
+
 
     @InjectMocks
     private StudentsController studentController;
@@ -84,50 +81,26 @@ public class StudentsControllerTest {
     private DataResult<Student> prepareUpdateData() {
 
         return new SuccessDataResult<>(
-                new Student(
-                        1,
-                        new AcademicDepartment(
-                                1,
-                                "Computer Engineering",
-                                new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456") )
+                student
         );
     }
 
     private static DataResult<Student> prepareCreatedData(){
         return new SuccessDataResult<>(
-                new Student(1,
-                        new AcademicDepartment(1,"Computer Engineering",
-                                new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)),
-                        3,
-                        new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456"))
+                student
         );
     }
 
     private DataResult<List<Student>> prepareDataList() {
         List<Student> students = new ArrayList<>();
-        students.add( new Student(
-                2,
-                new AcademicDepartment(
-                        1,
-                        "Software Engineering",
-                        new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(2,"shmsacr","sehmus@gmail.com",new Date(2000,01,12),new Date(2000,12,01),"123456")));
-        students.add( new Student(
-                1,
-                new AcademicDepartment(
-                        1,
-                        "Computer Engineering",
-                        new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)), 3, new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456")));
+        students.add( student);
+        students.add( student);
         return new SuccessDataResult<>(students);
     }
 
     private static DataResult<Student> prepareSingleData(){
         return new SuccessDataResult<>(
-                new Student(
-                        1,
-                        new AcademicDepartment(1,"Computer Engineering",
-                        new AcademicUnit(1,"Engineer Faculty",AcademicType.FACULTY)),
-                        3,
-                        new User(1,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2000,01,12),"123456"))
+                student
         );
     }
 
