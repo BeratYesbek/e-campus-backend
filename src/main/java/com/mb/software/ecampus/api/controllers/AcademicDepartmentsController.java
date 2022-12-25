@@ -1,6 +1,6 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.core.business.abstracts.AcademicDepartmentService;
+import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;

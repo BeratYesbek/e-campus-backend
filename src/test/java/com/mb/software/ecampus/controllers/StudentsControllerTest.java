@@ -4,16 +4,14 @@ import com.mb.software.ecampus.api.controllers.StudentsController;
 
 import static org.mockito.Mockito.*;
 
-import com.mb.software.ecampus.core.business.abstracts.StudentService;
+import com.mb.software.ecampus.business.abstracts.StudentService;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
-import com.mb.software.ecampus.entities.concretes.AcademicUnit;
 import com.mb.software.ecampus.entities.concretes.Student;
-import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;

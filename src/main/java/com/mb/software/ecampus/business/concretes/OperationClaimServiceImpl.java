@@ -53,13 +53,13 @@ public class OperationClaimServiceImpl implements OperationClaimService {
         return null;
     }
 
-    @SecurityOperation(security = {SecurityRole.SUPER_ADMIN})
-    @Logging(logType = DbLogging.class)
+   // @SecurityOperation(security = {SecurityRole.SUPER_ADMIN})
+   // @Logging(logType = DbLogging.class)
     @Override
     public DataResult<List<OperationClaim>> getAll() {
         return new SuccessDataResult<>(operationClaimsDao.findAll());
     }
-    @Logging(logType = DbLogging.class)
+    //@Logging(logType = DbLogging.class)
     @Override
     public DataResult<OperationClaim> getByDefaultRole() {
         return new SuccessDataResult<>(operationClaimsDao.findByName(SecurityRole.USER)) ;

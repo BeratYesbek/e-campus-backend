@@ -1,6 +1,6 @@
-package com.mb.software.ecampus.core.business.concretes;
+package com.mb.software.ecampus.business.concretes;
 
-import com.mb.software.ecampus.core.business.abstracts.AcademicDepartmentService;
+import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 import com.mb.software.ecampus.core.annotations.Logging;
 import com.mb.software.ecampus.core.annotations.SecurityOperation;
 import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.DbLogging;

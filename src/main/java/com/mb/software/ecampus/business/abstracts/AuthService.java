@@ -1,4 +1,4 @@
-package com.mb.software.ecampus.core.business.abstracts;
+package com.mb.software.ecampus.business.abstracts;
 
 import com.mb.software.ecampus.core.security.jwt.token.Token;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;

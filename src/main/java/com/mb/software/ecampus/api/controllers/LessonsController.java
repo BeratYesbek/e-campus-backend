@@ -1,6 +1,6 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.core.business.abstracts.LessonService;
+import com.mb.software.ecampus.business.abstracts.LessonService;
 
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;

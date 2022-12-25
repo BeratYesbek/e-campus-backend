@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "operation_claims")
+@Table(name = "operation_claim")
 public class OperationClaim extends DbEntity {
 
     @Id
@@ -20,7 +20,7 @@ public class OperationClaim extends DbEntity {
     @Column(name = "operation_claim_id")
     private int id;
 
-    @Column(name = "name", columnDefinition = "NVARCHAR(MAX)")
+    @Column(name = "name")
     private String name;
 
 }
