@@ -16,7 +16,7 @@ import java.util.Date;
 public class ChoosedLesson extends DbEntity {
 
     @Id
-    @Column(name = "")
+    @Column(name = "choosed_lesson_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
