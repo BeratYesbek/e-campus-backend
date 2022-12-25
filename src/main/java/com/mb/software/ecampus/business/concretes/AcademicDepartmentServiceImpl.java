@@ -1,9 +1,10 @@
-package com.mb.software.ecampus.core.business.concretes;
+package com.mb.software.ecampus.business.concretes;
 
-import com.mb.software.ecampus.core.business.abstracts.AcademicDepartmentService;
+import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 import com.mb.software.ecampus.core.annotations.Logging;
 import com.mb.software.ecampus.core.annotations.SecurityOperation;
 import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.DbLogging;
+import com.mb.software.ecampus.core.security.roles.SecurityRole;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
@@ -28,30 +29,35 @@ public class AcademicDepartmentServiceImpl implements AcademicDepartmentService 
     }
 
     @Logging(logType = DbLogging.class)
+    @SecurityOperation(security = {SecurityRole.ADMIN, SecurityRole.SUPER_ADMIN})
     @Override
     public DataResult<AcademicDepartment> add(AcademicDepartment entity) throws Exception {
         return new SuccessDataResult<AcademicDepartment>(academicDepartmentDao.save(entity));
     }
 
+    @SecurityOperation(security = {SecurityRole.ADMIN, SecurityRole.SUPER_ADMIN})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<AcademicDepartment> update(AcademicDepartment entity) {
         return new SuccessDataResult<>(academicDepartmentDao.save(entity));
     }
 
+    @SecurityOperation(security = {SecurityRole.ADMIN, SecurityRole.SUPER_ADMIN})
+    @Logging(logType = DbLogging.class)
     @Override
     public Result delete(int id) {
         academicDepartmentDao.deleteById(id);
         return new SuccessResult("Academic department has been deleted");
     }
 
-    @SecurityOperation(security = {"User", "Admin"})
+    @SecurityOperation(security = SecurityRole.USER)
     @Logging(logType = DbLogging.class)
     @Override
     public DataResult<AcademicDepartment> getById(int id) {
         return new SuccessDataResult<>(academicDepartmentDao.findById(id).get());
     }
 
-    @SecurityOperation(security = {"User", "Admin"})
+    @SecurityOperation(security = SecurityRole.USER)
     @Logging(logType = DbLogging.class)
     @Override
     public DataResult<List<AcademicDepartment>> getAll() {

@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "operation_claims")
+@Table(name = "operation_claim")
 public class OperationClaim extends DbEntity {
 
     @Id

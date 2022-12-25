@@ -2,6 +2,7 @@ package com.mb.software.ecampus.core.entities;
 
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "user_operation_claims")
 public class UserOperationClaim extends DbEntity {
 

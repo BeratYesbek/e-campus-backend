@@ -1,9 +1,9 @@
-package com.mb.software.ecampus.core.business.concretes;
+package com.mb.software.ecampus.business.concretes;
 
-import com.mb.software.ecampus.core.business.abstracts.AuthService;
-import com.mb.software.ecampus.core.business.abstracts.OperationClaimService;
-import com.mb.software.ecampus.core.business.abstracts.UserOperationClaimService;
-import com.mb.software.ecampus.core.business.abstracts.UserService;
+import com.mb.software.ecampus.business.abstracts.AuthService;
+import com.mb.software.ecampus.business.abstracts.OperationClaimService;
+import com.mb.software.ecampus.business.abstracts.UserOperationClaimService;
+import com.mb.software.ecampus.business.abstracts.UserService;
 import com.mb.software.ecampus.core.entities.OperationClaim;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.entities.UserOperationClaim;

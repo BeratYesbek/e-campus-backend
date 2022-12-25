@@ -1,6 +1,8 @@
 package com.mb.software.ecampus.business.concretes;
 
 import com.mb.software.ecampus.business.abstracts.UserService;
+import com.mb.software.ecampus.core.annotations.Logging;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.DbLogging;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
@@ -30,23 +32,25 @@ public class UserServiceImpl implements UserService {
         return new SuccessDataResult<>(userDao.save(entity));
     }
 
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<User> update(User entity) {
         return new SuccessDataResult<>(userDao.save(entity));
     }
 
+    @Logging(logType = DbLogging.class)
     @Override
-    public Result delete(int id) {
-        userDao.deleteById(id);
-        return new SuccessResult("User has been deleted");
+    public Result delete(int id) throws Exception {
+        throw new Exception("User cannot delete");
     }
 
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<User> getById(int id) {
         return new SuccessDataResult<>(userDao.findById(id).get());
     }
 
-
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<List<User>> getAll() {
         return new SuccessDataResult<>(userDao.findAll());

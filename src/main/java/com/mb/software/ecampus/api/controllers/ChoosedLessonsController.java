@@ -1,9 +1,9 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.business.abstracts.StudentService;
+import com.mb.software.ecampus.business.abstracts.ChoosedLessonService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
-import com.mb.software.ecampus.entities.concretes.Student;
+import com.mb.software.ecampus.entities.concretes.ChoosedLesson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/students")
-public class StudentsController {
+@RequestMapping("api/choosed_lessons")
+public class ChoosedLessonsController {
 
-    private final StudentService studentService;
+    private final ChoosedLessonService choosedLessonService;
 
-    public StudentsController(StudentService studentService) {
-        this.studentService = studentService;
+    public ChoosedLessonsController(ChoosedLessonService choosedLessonService) {
+        this.choosedLessonService = choosedLessonService;
     }
 
     @PostMapping
-    public ResponseEntity<DataResult<Student>> add(@RequestBody Student student) throws Exception {
-        DataResult result = studentService.add(student);
-        if (result.isSuccess()) {
+    public ResponseEntity<DataResult<ChoosedLesson>> add(@RequestBody ChoosedLesson choosedLesson) throws Exception{
+        DataResult result = choosedLessonService.add(choosedLesson);
+        if (result.isSuccess()){
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DataResult<Student>> update(@PathVariable int id, @RequestBody Student student) {
-        DataResult result = studentService.update(student);
-        if (result.isSuccess()) {
+    public ResponseEntity<DataResult<ChoosedLesson>> update(@PathVariable int id,@RequestBody ChoosedLesson choosedLesson){
+        DataResult result = choosedLessonService.update(choosedLesson);
+        if (result.isSuccess()){
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
@@ -40,16 +40,16 @@ public class StudentsController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
-        Result result = studentService.delete(id);
-        if (result.isSuccess()) {
+        Result result = choosedLessonService.delete(id);
+        if (result.isSuccess()){
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DataResult<Student>> getById(@PathVariable int id) {
-        DataResult result = studentService.getById(id);
+    public ResponseEntity<DataResult<ChoosedLesson>> getById(@PathVariable int id){
+        DataResult result = choosedLessonService.getById(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
@@ -57,13 +57,11 @@ public class StudentsController {
     }
 
     @GetMapping
-    public ResponseEntity<DataResult<List<Student>>> getAll() {
-        DataResult result = studentService.getAll();
+    public ResponseEntity<DataResult<List<ChoosedLesson>>> getAll(){
+        DataResult result = choosedLessonService.getAll();
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
         return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
     }
-
-
 }

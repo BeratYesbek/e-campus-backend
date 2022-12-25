@@ -37,7 +37,7 @@ public class PointsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id){
+    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
         Result result = pointService.delete(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);

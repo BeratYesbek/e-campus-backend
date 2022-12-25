@@ -1,9 +1,10 @@
 package com.mb.software.ecampus.controllers;
 import com.mb.software.ecampus.api.controllers.AcademicPersonalsController;
+import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 
 import static org.mockito.Mockito.*;
 
-import com.mb.software.ecampus.core.business.abstracts.AcademicPersonalService;
+import com.mb.software.ecampus.business.abstracts.AcademicPersonalService;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
@@ -13,12 +14,17 @@ import com.mb.software.ecampus.entities.concretes.*;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicRate;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import javax.print.Doc;
+import javax.xml.crypto.Data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -35,9 +41,6 @@ public class AcademicPersonalsControllerTest {
 
     @InjectMocks
     private AcademicPersonalsController academicPersonalsController;
-
-    static AcademicPersonal academicPersonal = new AcademicPersonal(1,AcademicRate.PROFESSOR,new Employee(),3,"Lisans","yok","yok","0538");
-    static AcademicPersonal academicPersonal1 = new AcademicPersonal(2,AcademicRate.PROFESSOR,new Employee(),3,"Lisans","yok","yok","0538");
 
     @Test
     public  void testGetAllMethodUsWorkingProperly(){
@@ -65,7 +68,7 @@ public class AcademicPersonalsControllerTest {
     }
 
     @Test
-    public void testDeleteByIdIsWorkingProperly(){
+    public void testDeleteByIdIsWorkingProperly() throws Exception {
         when(service.delete(academicPersonelId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = academicPersonalsController.delete(academicPersonelId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
@@ -83,30 +86,69 @@ public class AcademicPersonalsControllerTest {
 
     private static DataResult<AcademicPersonal>prepareSingleData(){
         return new SuccessDataResult<>(
-                academicPersonal);
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",AcademicType.FACULTY),
+                                new User(1,"Sehmus","test@gmail.com",
+                                        new Date(2000, Calendar.DECEMBER,5),
+                                        new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456","null","null","null","null","null"),
+                                null),1,"","","",""));
 
 
     }
 
     private static DataResult<AcademicPersonal>prepareUpdateData(){
         return new SuccessDataResult<>(
-                academicPersonal);
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",AcademicType.FACULTY),
+                                new User(1,"Sehmus","test@gmail.com",
+                                        new Date(2000, Calendar.DECEMBER,5),
+                                        new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456","null","null","null","null","null"),
+                                null),1,"","","",""));
+
 
 
     }
 
     private static DataResult<AcademicPersonal>prepareCreatedData(){
         return new SuccessDataResult<>(
-                academicPersonal);
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",AcademicType.FACULTY),
+                                new User(1,"Sehmus","test@gmail.com",
+                                        new Date(2000, Calendar.DECEMBER,5),
+                                        new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456","null","null","null","null","null"),
+                                null),1,"","","",""));
 
     }
 
 
     private DataResult<List<AcademicPersonal>> prepareDataList(){
         List<AcademicPersonal> academicPersonals = new ArrayList<>();
-        academicPersonals.add(academicPersonal);
+        academicPersonals.add(
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",AcademicType.FACULTY),
+                                new User(1,"Sehmus","test@gmail.com",
+                                        new Date(2000, Calendar.DECEMBER,5),
+                                        new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456","null","null","null","null","null"),
+                                null),1,"","","",""));
 
-        academicPersonals.add(academicPersonal1);
+
+        academicPersonals.add(
+                new AcademicPersonal(2, AcademicRate.PROFESSOR,
+                        new Employee(1,
+                                new EmployeeDepartment(1,"Sehmus"),
+                                new AcademicUnit(1, "Engineering Faculty",AcademicType.FACULTY),
+                                new User(1,"Sehmus","test@gmail.com",
+                                        new Date(2000, Calendar.DECEMBER,5),
+                                        new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456","null","null","null","null","null"),
+                                null),1,"","","",""));
 
         return new SuccessDataResult<>(academicPersonals);
     }

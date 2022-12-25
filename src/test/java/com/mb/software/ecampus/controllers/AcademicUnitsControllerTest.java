@@ -1,7 +1,7 @@
 package com.mb.software.ecampus.controllers;
 
 import com.mb.software.ecampus.api.controllers.AcademicUnitsController;
-import com.mb.software.ecampus.core.business.abstracts.AcademicUnitService;
+import com.mb.software.ecampus.business.abstracts.AcademicUnitService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
@@ -61,7 +61,7 @@ public class AcademicUnitsControllerTest {
 
 
     @Test
-    public void testDeleteIsWorkingProperly() {
+    public void testDeleteIsWorkingProperly() throws Exception {
         when(academicUnitService.delete(academicUnitId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = academicUnitsController.delete(academicUnitId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);

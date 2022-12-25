@@ -24,7 +24,6 @@ public class LessonContentServiceImpl implements LessonContentService {
         this.lessonContentDao = lessonContentDao;
     }
 
-
     @Override
     public DataResult<LessonContent> add(LessonContent entity) throws Exception {
         return new SuccessDataResult<>(lessonContentDao.save(entity));

@@ -14,7 +14,7 @@ public interface ServiceRepository<T> {
 
     DataResult<T> update(T entity);
 
-    Result delete(int id);
+    Result delete(int id) throws Exception;
 
     DataResult<T> getById(int id);
 

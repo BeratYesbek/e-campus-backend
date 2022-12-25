@@ -1,7 +1,7 @@
 package com.mb.software.ecampus.controllers;
 
 import com.mb.software.ecampus.api.controllers.AcademicDepartmentsController;
-import com.mb.software.ecampus.core.business.abstracts.AcademicDepartmentService;
+import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 
 import static org.mockito.Mockito.*;
 
@@ -13,12 +13,16 @@ import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import com.mb.software.ecampus.entities.concretes.AcademicUnit;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import javax.xml.crypto.Data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -33,10 +37,6 @@ public class AcademicDepartmentsControllerTest {
 
     @InjectMocks
     private AcademicDepartmentsController academicDepartmentsController;
-
-    static AcademicDepartment academicDepartment = new AcademicDepartment(0,"seher","içerik",new AcademicUnit(0,"Enginnering Faculty",AcademicType.FACULTY));
-    static AcademicDepartment academicDepartment1 = new AcademicDepartment(1,"seher","içerik",new AcademicUnit(0,"Enginnering Faculty",AcademicType.FACULTY));
-
 
     @Test
     public void testGetAllMethodIsWorkingProperly() {
@@ -62,7 +62,7 @@ public class AcademicDepartmentsControllerTest {
     }
 
     @Test
-    public void testDeleteIsWorkingProperly() {
+    public void testDeleteIsWorkingProperly() throws Exception {
         when(service.delete(academicUnitId)).thenReturn(new SuccessResult());
         ResponseEntity<Result> response = academicDepartmentsController.delete(academicUnitId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
@@ -78,24 +78,35 @@ public class AcademicDepartmentsControllerTest {
 
     private static DataResult<AcademicDepartment> prepareUpdateData() {
         return new SuccessDataResult<>(
-                academicDepartment
-                );
+                new AcademicDepartment(
+                        2,
+                        "Software Engineering",
+                        "",
+                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY)));
     }
 
     private static DataResult<AcademicDepartment> prepareCreatedData() {
         return new SuccessDataResult<>(
-                academicDepartment);
+                new AcademicDepartment(
+                        1,
+                        "Computer Engineering",
+                        "",
+                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY)));
     }
 
     private static DataResult<AcademicDepartment> prepareSingleData() {
         return new SuccessDataResult<>(
-                academicDepartment);
+                new AcademicDepartment(
+                        1,
+                        "Computer Engineering",
+                        "",
+                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY)));
     }
 
     private DataResult<List<AcademicDepartment>> prepareDataList() {
         List<AcademicDepartment> academicDepartments = new ArrayList<>();
-        academicDepartments.add(academicDepartment);
-        academicDepartments.add(academicDepartment1);
+        academicDepartments.add(new AcademicDepartment(1, "Software Engineering","", new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY)));
+        academicDepartments.add(new AcademicDepartment(2, "Computer Engineering","", new AcademicUnit(2, "Engineering Faculty", AcademicType.FACULTY)));
         return new SuccessDataResult<>(academicDepartments);
     }
 

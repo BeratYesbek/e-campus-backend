@@ -1,6 +1,6 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.core.business.abstracts.AcademicDepartmentService;
+import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
@@ -31,7 +31,7 @@ public class AcademicDepartmentsController extends BaseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id) {
+    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
         return new ResponseEntity<>(academicDepartmentService.delete(id), HttpStatus.OK);
     }
 

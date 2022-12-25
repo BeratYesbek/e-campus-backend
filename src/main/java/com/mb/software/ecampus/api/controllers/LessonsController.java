@@ -1,6 +1,6 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.core.business.abstracts.LessonService;
+import com.mb.software.ecampus.business.abstracts.LessonService;
 
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
@@ -32,7 +32,7 @@ public class LessonsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id){
+    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
         return new ResponseEntity<>(lessonService.delete(id), HttpStatus.OK);
     }
 
