@@ -1,6 +1,6 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.business.abstracts.AuthService;
+import com.mb.software.ecampus.core.business.abstracts.AuthService;
 import com.mb.software.ecampus.core.entities.User;
 
 import com.mb.software.ecampus.core.security.jwt.token.Token;

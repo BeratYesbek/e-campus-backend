@@ -1,12 +1,11 @@
 package com.mb.software.ecampus.controllers;
 
 import com.mb.software.ecampus.api.controllers.AcademicUnitsController;
-import com.mb.software.ecampus.business.abstracts.AcademicUnitService;
+import com.mb.software.ecampus.core.business.abstracts.AcademicUnitService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
-import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import com.mb.software.ecampus.entities.concretes.AcademicUnit;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
 import org.junit.jupiter.api.Test;
@@ -15,14 +14,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +30,10 @@ public class AcademicUnitsControllerTest {
 
     @Mock
     private AcademicUnitService academicUnitService;
+
+    static AcademicUnit academicUnit = new AcademicUnit(0,"Engineering",AcademicType.FACULTY);
+    static AcademicUnit academicUnit1 = new AcademicUnit(1,"Engineering",AcademicType.FACULTY);
+
 
     @InjectMocks
     private AcademicUnitsController academicUnitsController;
@@ -79,25 +77,25 @@ public class AcademicUnitsControllerTest {
 
     private static DataResult<AcademicUnit> prepareSingleData(){
         return new SuccessDataResult<>(
-                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
+                academicUnit);
 
     }
 
 
     private static DataResult<AcademicUnit> prepareUpdateData(){
         return new SuccessDataResult<>(
-                new AcademicUnit(2, "Engineering", AcademicType.FACULTY));
+                academicUnit);
 
     }
 
     private static DataResult<AcademicUnit> prepareCreatedData() {
         return new SuccessDataResult<>(
-                new AcademicUnit(1, "Engineering", AcademicType.FACULTY));
+                academicUnit);
     }
     private DataResult<List<AcademicUnit>> prepareDataList(){
         List<AcademicUnit> academicUnits = new ArrayList<>();
-        academicUnits.add(new AcademicUnit(1, "Engineering", AcademicType.FACULTY));
-        academicUnits.add(new AcademicUnit(2, "Medicine", AcademicType.FACULTY));
+        academicUnits.add(academicUnit);
+        academicUnits.add(academicUnit1);
         return new SuccessDataResult<>(academicUnits);
     }
 

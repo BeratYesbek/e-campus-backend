@@ -1,28 +1,26 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.core.business.abstracts.StudentService;
+import com.mb.software.ecampus.business.abstracts.PointService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
-import com.mb.software.ecampus.entities.concretes.Student;
+import com.mb.software.ecampus.entities.concretes.Point;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/api/students")
-public class StudentsController {
+@RequestMapping("api/points")
+public class PointsController {
 
-    private final StudentService studentService;
+    private final PointService pointService;
 
-    public StudentsController(StudentService studentService) {
-        this.studentService = studentService;
+    public PointsController(PointService pointService) {
+        this.pointService = pointService;
     }
 
     @PostMapping
-    public ResponseEntity<DataResult<Student>> add(@RequestBody Student student) throws Exception {
-        DataResult result = studentService.add(student);
+    public ResponseEntity<DataResult<Point>> add(@RequestBody Point point) throws Exception{
+        DataResult result = pointService.add(point);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         }
@@ -30,8 +28,8 @@ public class StudentsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DataResult<Student>> update(@PathVariable int id, @RequestBody Student student) {
-        DataResult result = studentService.update(student);
+    public ResponseEntity<DataResult<Point>> update(@PathVariable int id,@RequestBody Point point){
+        DataResult result = pointService.update(point);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
@@ -39,8 +37,8 @@ public class StudentsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Result> delete(@PathVariable int id) throws Exception {
-        Result result = studentService.delete(id);
+    public ResponseEntity<Result> delete(@PathVariable int id){
+        Result result = pointService.delete(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
@@ -48,8 +46,8 @@ public class StudentsController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DataResult<Student>> getById(@PathVariable int id) {
-        DataResult result = studentService.getById(id);
+    public ResponseEntity<DataResult<Point>> getById(@PathVariable int id){
+        DataResult result = pointService.getById(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }
@@ -57,8 +55,8 @@ public class StudentsController {
     }
 
     @GetMapping
-    public ResponseEntity<DataResult<List<Student>>> getAll() {
-        DataResult result = studentService.getAll();
+    public ResponseEntity<DataResult<Point>> getAll(){
+        DataResult result = pointService.getAll();
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
         }

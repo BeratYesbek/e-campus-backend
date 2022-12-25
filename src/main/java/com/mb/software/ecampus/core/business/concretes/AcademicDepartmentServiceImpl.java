@@ -1,6 +1,6 @@
-package com.mb.software.ecampus.business.concretes;
+package com.mb.software.ecampus.core.business.concretes;
 
-import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
+import com.mb.software.ecampus.core.business.abstracts.AcademicDepartmentService;
 import com.mb.software.ecampus.core.annotations.Logging;
 import com.mb.software.ecampus.core.annotations.SecurityOperation;
 import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.DbLogging;
@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.security.sasl.AuthenticationException;
 import java.util.List;
 
 @Service
