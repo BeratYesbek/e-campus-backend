@@ -56,10 +56,17 @@ public class ChoosedLessonControllerTest {
                     new Date(2000,12,01),
                     new Date(2022,12,23),"123456","0538","female","ankara","Ankara","Türkiye"));
     static ChoosedLesson choosedLesson = new ChoosedLesson(1,lesson,student,new Date(any()),"");
+    static ChoosedLesson choosedLesson1 = new ChoosedLesson(0,lesson,student,new Date(any()),"");
 
     @InjectMocks
     private ChoosedLessonsController choosedLessonsController;
 
+    @Test
+    public void testGetAllMethodIsWorkingProperly() {
+        when(choosedLessonService.getAll()).thenReturn(prepareDataList());
+        ResponseEntity<DataResult<List<ChoosedLesson>>> response = choosedLessonsController.getAll();
+        assertEquals(response.getBody().getData(), prepareDataList().getData());
+    }
     @Test
     public void testAddMethodIsWorkingProperly() throws Exception{
         when(choosedLessonService.add(any())).thenReturn(prepareCreatedData());
@@ -82,6 +89,19 @@ public class ChoosedLessonControllerTest {
         assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
+    public void testGetByIdIsWorkingProperly() {
+        when(choosedLessonService.getById(choosedLessonId)).thenReturn(prepareSingleData());
+        ResponseEntity<DataResult<ChoosedLesson>> response = choosedLessonsController.getById(choosedLessonId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getData(), prepareSingleData().getData());
+    }
+
+    private static DataResult <ChoosedLesson>prepareSingleData(){
+        return new SuccessDataResult<>(
+                choosedLesson
+        );
+    }
+
     private static DataResult<ChoosedLesson>prepareUpdateData(){
         return new SuccessDataResult<>(choosedLesson);
     }
@@ -90,6 +110,12 @@ public class ChoosedLessonControllerTest {
         return new SuccessDataResult<>(
                 choosedLesson
         );
+    }
+    private DataResult<List<ChoosedLesson>>prepareDataList(){
+        List<ChoosedLesson>choosed_Lessons = new ArrayList<>();
+        choosed_Lessons.add(choosedLesson);
+        choosed_Lessons.add(choosedLesson1);
+        return new SuccessDataResult<>(choosed_Lessons);
     }
 
     private static final int choosedLessonId = 2;
