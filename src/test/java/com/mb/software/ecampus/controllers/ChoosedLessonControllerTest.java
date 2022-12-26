@@ -68,9 +68,23 @@ public class ChoosedLessonControllerTest {
         assertEquals(response.getBody().getData(),prepareCreatedData().getData());
     }
 
+    @Test
+    public void testUpdateIsWorkingProperly(){
+        when(choosedLessonService.update(any())).thenReturn(prepareUpdateData());
+        ResponseEntity<DataResult<ChoosedLesson>> response = choosedLessonsController.update(choosedLessonId,any());
+        assertEquals(response.getStatusCode(),HttpStatus.OK);
+        assertEquals(response.getBody().getData(),prepareUpdateData().getData());
+    }
+
+    private static DataResult<ChoosedLesson>prepareUpdateData(){
+        return new SuccessDataResult<>(choosedLesson);
+    }
+
     private static DataResult<ChoosedLesson>prepareCreatedData(){
         return new SuccessDataResult<>(
                 choosedLesson
         );
     }
+
+    private static final int choosedLessonId = 2;
 }
