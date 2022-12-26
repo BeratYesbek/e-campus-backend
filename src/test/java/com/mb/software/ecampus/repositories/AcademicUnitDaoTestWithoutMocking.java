@@ -21,23 +21,23 @@ public class AcademicUnitDaoTestWithoutMocking {
     @Autowired
     public AcademicUnitDao academicUnitDao;
 
+    AcademicUnit academicUnit = new AcademicUnit(0, "Engineering Faculty", AcademicType.FACULTY);
+
     @Test
     public void testSave() {
-        AcademicUnit academicUnit = new AcademicUnit(0, "Engineering Faculty", AcademicType.FACULTY);
         AcademicUnit addedAcademicUnit = academicUnitDao.save(academicUnit);
         assertEquals(academicUnit, addedAcademicUnit);
     }
 
     @Test
     public void testDelete() {
-        AcademicUnit academicUnit = new AcademicUnit(0, "Engineering Faculty", AcademicType.FACULTY);
         AcademicUnit addedAcademicUnit = academicUnitDao.save(academicUnit);
         academicUnitDao.deleteById(addedAcademicUnit.getId());
     }
 
     @Test
     public void testFindById() {
-        AcademicUnit academicUnit = new AcademicUnit(0, "Engineering Faculty", AcademicType.FACULTY);
+
         AcademicUnit addedAcademicUnit = academicUnitDao.save(academicUnit);
         AcademicUnit foundAcademicUnit = academicUnitDao.findById(addedAcademicUnit.getId()).get();
         assertEquals(addedAcademicUnit.getId(),foundAcademicUnit.getId());

@@ -21,7 +21,6 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class AcademicPersonalDaoTestWithoutMocking {
@@ -29,34 +28,28 @@ public class AcademicPersonalDaoTestWithoutMocking {
 
     @Autowired
     public AcademicPersonalDao academicPersonalDao;
+    AcademicPersonal academicPersonal = new AcademicPersonal(2, AcademicRate.PROFESSOR,
+            new Employee(1,
+                    new EmployeeDepartment(1,"Sehmus"),
+                    new AcademicUnit(1, "Engineering Faculty",
+                            AcademicType.FACULTY),new User(1,"Sehmus","test@gmail.com",
+                    new Date(2000, Calendar.DECEMBER,5),
+                    new Date(2022, Calendar.SEPTEMBER,5,12,45),"123456",
+                    "+90555 555 55 55","Male","Kocavezirsk","Seyhan","Adana"),
+                    null),4,null,null,null,null);
 
     @Test
-    public void testSave() {
-        AcademicPersonal academicPersonal = new AcademicPersonal(2, AcademicRate.PROFESSOR,
-                new Employee(1,
-                        new EmployeeDepartment(1, "Sehmus"),
-                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY),
-                        new User(1, "Sehmus", "test@gmail.com",
-                                new Date(2000, Calendar.DECEMBER, 5),
-                                new Date(2022, Calendar.SEPTEMBER, 5, 12, 45), "123456", "null", "null", "null", "null", "null"),
-                        null), 1, "", "", "", ""))
+    public  void testSave(){
         AcademicPersonal addesAcademicPersonal = academicPersonalDao.save(academicPersonal);
-        assertEquals(academicPersonal, addesAcademicPersonal);
+        assertEquals(academicPersonal,addesAcademicPersonal);
     }
 
-    @Test
-    public void testFindById() {
-        AcademicPersonal academicPersonal = new AcademicPersonal(2, AcademicRate.PROFESSOR,
-                new Employee(1,
-                        new EmployeeDepartment(1, "Sehmus"),
-                        new AcademicUnit(1, "Engineering Faculty", AcademicType.FACULTY),
-                        new User(1, "Sehmus", "test@gmail.com",
-                                new Date(2000, Calendar.DECEMBER, 5),
-                                new Date(2022, Calendar.SEPTEMBER, 5, 12, 45), "123456", "null", "null", "null", "null", "null"),
-                        null), 1, "", "", "", ""))
+   @Test
+    public void testFindById(){
+
         AcademicPersonal addedAcademicPersonal = academicPersonalDao.save(academicPersonal);
         AcademicPersonal foundAcademicPersonal = academicPersonalDao.findById(addedAcademicPersonal.getId()).get();
-        assertEquals(addedAcademicPersonal.getId(), foundAcademicPersonal.getId());
-    }
+        assertEquals(addedAcademicPersonal.getId(),foundAcademicPersonal.getId());
+   }
 
 }

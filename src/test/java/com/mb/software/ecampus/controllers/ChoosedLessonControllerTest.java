@@ -75,6 +75,12 @@ public class ChoosedLessonControllerTest {
         assertEquals(response.getStatusCode(),HttpStatus.OK);
         assertEquals(response.getBody().getData(),prepareUpdateData().getData());
     }
+    @Test
+    public void testDeleteIsWorkingProperly() throws Exception {
+        when(choosedLessonService.delete(choosedLessonId)).thenReturn(new SuccessResult());
+        ResponseEntity<Result> response = choosedLessonsController.delete(choosedLessonId);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+    }
 
     private static DataResult<ChoosedLesson>prepareUpdateData(){
         return new SuccessDataResult<>(choosedLesson);

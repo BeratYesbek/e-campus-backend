@@ -27,7 +27,11 @@ public class StudentDaoTestWithoutMocking {
     public StudentDao studentDao;
 
     public void testSave(){
-        Student student = new Student(1,new AcademicDepartment(1,"seher",new AcademicUnit(1,"Engineering Faculty",AcademicType.FACULTY)),3,new User(0,"seherst","seher@gmail.com",new Date(2000,01,12),new Date(2022,01,12),"123456"));
+        Student student = Student.builder()
+                .academicDepartment(new AcademicDepartment(1,"","seher",new AcademicUnit(1,"Engineering Faculty",AcademicType.FACULTY)))
+                .user(new User(1,"seherst","seher@gmail.com",new Date(2000,01,12)
+                ,new Date(2022,01,12),"123456","","","","","")).build();
+
         Student addedStudent = studentDao.save(student);
         assertEquals(student,addedStudent);
 
