@@ -63,7 +63,8 @@ public class ChoosedLessonControllerTest {
     @Test
     public void testAddMethodIsWorkingProperly() throws Exception{
         when(choosedLessonService.add(any())).thenReturn(prepareCreatedData());
-        ResponseEntity<DataResult<List<ChoosedLesson>>> response = choosedLessonsController.getAll();
+        ResponseEntity<DataResult<ChoosedLesson>> response = choosedLessonsController.add(any());
+        assertEquals(response.getStatusCode(),HttpStatus.CREATED);
         assertEquals(response.getBody().getData(),prepareCreatedData().getData());
     }
 
