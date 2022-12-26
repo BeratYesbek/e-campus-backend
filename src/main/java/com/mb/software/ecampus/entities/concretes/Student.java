@@ -3,6 +3,7 @@ package com.mb.software.ecampus.entities.concretes;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "students")
 public class Student extends DbEntity {
 

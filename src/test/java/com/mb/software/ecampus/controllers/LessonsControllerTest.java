@@ -39,6 +39,17 @@ public class LessonsControllerTest {
 
     @InjectMocks
     private LessonsController lessonsController;
+    static Lesson lesson = new Lesson(1,
+            new AcademicPersonal(1,AcademicRate.PROFESSOR,
+                    new Employee(1,
+                            new EmployeeDepartment(1,"Engineering"),
+                            new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),
+                            new User(1,"Sehmus","test@gmail.com",
+                                    new Date(any()),
+                                    new Date(any()),
+                                    "123456","+900","Female","","",""),null),5,"65","65","65","65"),
+            new AcademicDepartment(1,"Computer Engineerinh","",
+                    new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"STP","BL301","",5,5,2022,true);
 
     @Test
     public void testGetAllMethodIsWorkingProperly(){
@@ -80,35 +91,26 @@ public class LessonsControllerTest {
 
     private static DataResult<Lesson> prepareSingleData() {
         return new SuccessDataResult<>(
-                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering","",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-                )
+                lesson
         );
     }
 
 
     private static DataResult<Lesson> prepareUpdateData() {
         return new SuccessDataResult<>(
-                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering","",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-                )
+                lesson
         );
     }
 
     private static DataResult<Lesson> prepareCreatedData() {
         return new SuccessDataResult<>(
-                new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),
-
-
-                        )),new AcademicDepartment(1,"Engineering","",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-                )
+                lesson
         );
     }
 
     private static DataResult<List<Lesson>> prepareDataList() {
         List<Lesson> lessons = new ArrayList<>();
-        lessons.add(new Lesson(1,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering","",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-        ));
-        lessons.add(new Lesson(2,new AcademicPersonal(1,AcademicRate.DOC,new Employee(1,new EmployeeDepartment(1,"Engineering"),new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),new User(1,"seherst","seher@gmail.com",new Date(2000,12,01),new Date(2022,12,01,15,45),"123456"))),new AcademicDepartment(1,"Engineering","",new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"Data structure"
-        ));
+        lessons.add(lesson);
         return new SuccessDataResult<>(lessons);
     }
     @Before
