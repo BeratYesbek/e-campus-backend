@@ -3,6 +3,7 @@ package com.mb.software.ecampus.repositories;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.dataAccess.dao.AcademicUnitDao;
 import com.mb.software.ecampus.dataAccess.dao.StudentDao;
+import com.mb.software.ecampus.dataAccess.dao.UserDao;
 import com.mb.software.ecampus.entities.concretes.AcademicDepartment;
 import com.mb.software.ecampus.entities.concretes.AcademicUnit;
 import com.mb.software.ecampus.entities.concretes.Student;
@@ -26,13 +27,23 @@ public class StudentDaoTestWithoutMocking {
     @Autowired
     public StudentDao studentDao;
 
+    private static final User user =  new User(0,"seherst","seher@gmail.com",new Date(2000,01,12)
+                ,new Date(2022,01,12),"123456","safsafsa","safas","safas","asfas","safsafas");
+    @Autowired
+    private UserDao userDao;
+
+    @Test
     public void testSave(){
+
+
+        User addedUser = userDao.save(user);
         Student student = Student.builder()
                 .academicDepartment(new AcademicDepartment(1,"","seher",new AcademicUnit(1,"Engineering Faculty",AcademicType.FACULTY)))
-                .user(new User(1,"seherst","seher@gmail.com",new Date(2000,01,12)
-                ,new Date(2022,01,12),"123456","","","","","")).build();
+                .user(new User(addedUser.getId(),"seherst","seher@gmail.com",new Date(2000,01,12)
+                        ,new Date(2022,01,12),"123456","","","","","")).build();
 
         Student addedStudent = studentDao.save(student);
+
         assertEquals(student,addedStudent);
 
     }

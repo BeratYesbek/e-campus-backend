@@ -43,8 +43,8 @@ public class ChoosedLessonControllerTest {
                             new EmployeeDepartment(1,"Engineering"),
                             new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),
                             new User(1,"Sehmus","test@gmail.com",
-                                    new Date(any()),
-                                    new Date(any()),
+                                    null,
+                                    null,
                                     "123456","+900","Female","","",""),null),5,"65","65","65","65"),
             new AcademicDepartment(1,"Computer Engineerinh","",
                     new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"STP","BL301","",5,5,2022,true);
@@ -55,8 +55,8 @@ public class ChoosedLessonControllerTest {
             new User(1,"seherst","seher@gmail.com",
                     new Date(2000,12,01),
                     new Date(2022,12,23),"123456","0538","female","ankara","Ankara","Türkiye"));
-    static ChoosedLesson choosedLesson = new ChoosedLesson(1,lesson,student,new Date(any()),"");
-    static ChoosedLesson choosedLesson1 = new ChoosedLesson(0,lesson,student,new Date(any()),"");
+    static ChoosedLesson choosedLesson = new ChoosedLesson(1,lesson,student,null,"");
+    static ChoosedLesson choosedLesson1 = new ChoosedLesson(0,lesson,student, null,"");
 
     @InjectMocks
     private ChoosedLessonsController choosedLessonsController;

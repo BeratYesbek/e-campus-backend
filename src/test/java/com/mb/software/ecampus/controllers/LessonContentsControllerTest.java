@@ -44,8 +44,8 @@ public class LessonContentsControllerTest {
                             new EmployeeDepartment(1,"Engineering"),
                             new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY),
                             new User(1,"Sehmus","test@gmail.com",
-                                    new Date(any()),
-                                    new Date(any()),
+                                    null,
+                                    null   ,
                                     "123456","+900","Female","","",""),null),5,"65","65","65","65"),
             new AcademicDepartment(1,"Computer Engineerinh","",
                     new AcademicUnit(1,"Computer Engineering",AcademicType.FACULTY)),"STP","BL301","",5,5,2022,true);

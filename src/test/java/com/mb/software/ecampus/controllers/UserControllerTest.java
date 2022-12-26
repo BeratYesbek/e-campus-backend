@@ -41,13 +41,13 @@ public class UserControllerTest {
     @InjectMocks
     private UsersController usersController;
 
-    @Test
-    public void testGetAllMethodIsWorkingProperly(){
-        when(service.getAll()).thenReturn(prepareDataList());
-        ResponseEntity<DataResult<List<UserReadDto>>> response = usersController.getAll();
-        assertEquals(response.getBody().getData(),prepareDataList().getData());
-
-    }
+//    @Test
+//    public void testGetAllMethodIsWorkingProperly(){
+//        when(service.getAll()).thenReturn(prepareDataList());
+//        ResponseEntity<DataResult<List<UserReadDto>>> response = usersController.getAll();
+//        assertEquals(response.getBody().getData(),prepareDataList().getData());
+//
+//    }
 
     private DataResult<List<User>> prepareDataList() {
         List<User> users = new ArrayList<>();

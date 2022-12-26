@@ -43,5 +43,5 @@ public class UserOperationClaimsControllerTest {
         return new SuccessDataResult<>(operationClaims);
     }
 
-    private static final int userOperationClaimId = 0;
+    private static final int userOperationClaimId = 21;
 }
