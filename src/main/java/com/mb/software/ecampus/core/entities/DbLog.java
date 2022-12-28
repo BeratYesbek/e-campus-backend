@@ -24,8 +24,12 @@ public class DbLog extends DbEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "db_log_id")
     private int id;
+
+    @Column(columnDefinition = "text")
     private String logDetail;
+    @Column(columnDefinition = "text")
     private String message;
+    @Column(columnDefinition = "text")
     private LogLevel logLevel;
     private Date createdAt;
 

@@ -45,7 +45,7 @@ public class Lesson extends DbEntity {
     @Column(name = "year")
     private int year;
 
-    @Column(name = "isMandotory")
-    private boolean isMandotory;
+    @Column(name = "is_mandatory")
+    private boolean is_mandatory;
 
 }

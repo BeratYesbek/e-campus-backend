@@ -1,7 +1,7 @@
 package com.mb.software.ecampus.business.abstracts;
 
 import com.mb.software.ecampus.business.abstracts.common.ServiceRepository;
-import com.mb.software.ecampus.entities.concretes.ChoosedLesson;
+import com.mb.software.ecampus.entities.concretes.ChosenLesson;
 
-public interface ChoosedLessonService extends ServiceRepository<ChoosedLesson> {
+public interface ChoosedLessonService extends ServiceRepository<ChosenLesson> {
 }

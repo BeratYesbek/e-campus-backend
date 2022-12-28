@@ -1,6 +1,5 @@
 package com.mb.software.ecampus.controllers;
 import com.mb.software.ecampus.api.controllers.ChoosedLessonsController;
-import com.mb.software.ecampus.business.abstracts.AcademicDepartmentService;
 
 import static org.mockito.Mockito.*;
 
@@ -13,17 +12,12 @@ import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.entities.concretes.*;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicRate;
 import com.mb.software.ecampus.entities.concretes.enums.AcademicType;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import javax.xml.crypto.Data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -55,8 +49,8 @@ public class ChoosedLessonControllerTest {
             new User(1,"seherst","seher@gmail.com",
                     new Date(2000,12,01),
                     new Date(2022,12,23),"123456","0538","female","ankara","Ankara","Türkiye"));
-    static ChoosedLesson choosedLesson = new ChoosedLesson(1,lesson,student,null,"");
-    static ChoosedLesson choosedLesson1 = new ChoosedLesson(0,lesson,student, null,"");
+    static ChosenLesson choosedLesson = new ChosenLesson(1,lesson,student,null,"");
+    static ChosenLesson choosedLesson1 = new ChosenLesson(0,lesson,student, null,"");
 
     @InjectMocks
     private ChoosedLessonsController choosedLessonsController;
@@ -64,13 +58,13 @@ public class ChoosedLessonControllerTest {
     @Test
     public void testGetAllMethodIsWorkingProperly() {
         when(choosedLessonService.getAll()).thenReturn(prepareDataList());
-        ResponseEntity<DataResult<List<ChoosedLesson>>> response = choosedLessonsController.getAll();
+        ResponseEntity<DataResult<List<ChosenLesson>>> response = choosedLessonsController.getAll();
         assertEquals(response.getBody().getData(), prepareDataList().getData());
     }
     @Test
     public void testAddMethodIsWorkingProperly() throws Exception{
         when(choosedLessonService.add(any())).thenReturn(prepareCreatedData());
-        ResponseEntity<DataResult<ChoosedLesson>> response = choosedLessonsController.add(any());
+        ResponseEntity<DataResult<ChosenLesson>> response = choosedLessonsController.add(any());
         assertEquals(response.getStatusCode(),HttpStatus.CREATED);
         assertEquals(response.getBody().getData(),prepareCreatedData().getData());
     }
@@ -78,7 +72,7 @@ public class ChoosedLessonControllerTest {
     @Test
     public void testUpdateIsWorkingProperly(){
         when(choosedLessonService.update(any())).thenReturn(prepareUpdateData());
-        ResponseEntity<DataResult<ChoosedLesson>> response = choosedLessonsController.update(choosedLessonId,any());
+        ResponseEntity<DataResult<ChosenLesson>> response = choosedLessonsController.update(choosedLessonId,any());
         assertEquals(response.getStatusCode(),HttpStatus.OK);
         assertEquals(response.getBody().getData(),prepareUpdateData().getData());
     }
@@ -91,28 +85,28 @@ public class ChoosedLessonControllerTest {
 
     public void testGetByIdIsWorkingProperly() {
         when(choosedLessonService.getById(choosedLessonId)).thenReturn(prepareSingleData());
-        ResponseEntity<DataResult<ChoosedLesson>> response = choosedLessonsController.getById(choosedLessonId);
+        ResponseEntity<DataResult<ChosenLesson>> response = choosedLessonsController.getById(choosedLessonId);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         assertEquals(response.getBody().getData(), prepareSingleData().getData());
     }
 
-    private static DataResult <ChoosedLesson>prepareSingleData(){
+    private static DataResult <ChosenLesson>prepareSingleData(){
         return new SuccessDataResult<>(
                 choosedLesson
         );
     }
 
-    private static DataResult<ChoosedLesson>prepareUpdateData(){
+    private static DataResult<ChosenLesson>prepareUpdateData(){
         return new SuccessDataResult<>(choosedLesson);
     }
 
-    private static DataResult<ChoosedLesson>prepareCreatedData(){
+    private static DataResult<ChosenLesson>prepareCreatedData(){
         return new SuccessDataResult<>(
                 choosedLesson
         );
     }
-    private DataResult<List<ChoosedLesson>>prepareDataList(){
-        List<ChoosedLesson>choosed_Lessons = new ArrayList<>();
+    private DataResult<List<ChosenLesson>>prepareDataList(){
+        List<ChosenLesson>choosed_Lessons = new ArrayList<>();
         choosed_Lessons.add(choosedLesson);
         choosed_Lessons.add(choosedLesson1);
         return new SuccessDataResult<>(choosed_Lessons);

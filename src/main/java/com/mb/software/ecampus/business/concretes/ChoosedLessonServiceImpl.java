@@ -6,7 +6,7 @@ import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.core.utilities.results.data.SuccessDataResult;
 import com.mb.software.ecampus.dataAccess.dao.ChoosedLessonDao;
-import com.mb.software.ecampus.entities.concretes.ChoosedLesson;
+import com.mb.software.ecampus.entities.concretes.ChosenLesson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,12 +25,12 @@ public class ChoosedLessonServiceImpl implements ChoosedLessonService {
     }
 
     @Override
-    public DataResult<ChoosedLesson> add(ChoosedLesson entity) throws Exception {
+    public DataResult<ChosenLesson> add(ChosenLesson entity) throws Exception {
         return new SuccessDataResult<>(choosedLessonDao.save(entity));
     }
 
     @Override
-    public DataResult<ChoosedLesson> update(ChoosedLesson entity) {
+    public DataResult<ChosenLesson> update(ChosenLesson entity) {
         return new SuccessDataResult<>(choosedLessonDao.save(entity));
     }
 
@@ -41,12 +41,12 @@ public class ChoosedLessonServiceImpl implements ChoosedLessonService {
     }
 
     @Override
-    public DataResult<ChoosedLesson> getById(int id) {
+    public DataResult<ChosenLesson> getById(int id) {
         return new SuccessDataResult<>(choosedLessonDao.findById(id).get());
     }
 
     @Override
-    public DataResult<List<ChoosedLesson>> getAll() {
+    public DataResult<List<ChosenLesson>> getAll() {
         return new SuccessDataResult<>(choosedLessonDao.findAll());
     }
 }

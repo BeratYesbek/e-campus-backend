@@ -3,7 +3,7 @@ package com.mb.software.ecampus.api.controllers;
 import com.mb.software.ecampus.business.abstracts.ChoosedLessonService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
-import com.mb.software.ecampus.entities.concretes.ChoosedLesson;
+import com.mb.software.ecampus.entities.concretes.ChosenLesson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class ChoosedLessonsController {
     }
 
     @PostMapping
-    public ResponseEntity<DataResult<ChoosedLesson>> add(@RequestBody ChoosedLesson choosedLesson) throws Exception{
+    public ResponseEntity<DataResult<ChosenLesson>> add(@RequestBody ChosenLesson choosedLesson) throws Exception{
         DataResult result = choosedLessonService.add(choosedLesson);
         if (result.isSuccess()){
             return new ResponseEntity<>(result, HttpStatus.CREATED);
@@ -30,7 +30,7 @@ public class ChoosedLessonsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DataResult<ChoosedLesson>> update(@PathVariable int id,@RequestBody ChoosedLesson choosedLesson){
+    public ResponseEntity<DataResult<ChosenLesson>> update(@PathVariable int id, @RequestBody ChosenLesson choosedLesson){
         DataResult result = choosedLessonService.update(choosedLesson);
         if (result.isSuccess()){
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -48,7 +48,7 @@ public class ChoosedLessonsController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DataResult<ChoosedLesson>> getById(@PathVariable int id){
+    public ResponseEntity<DataResult<ChosenLesson>> getById(@PathVariable int id){
         DataResult result = choosedLessonService.getById(id);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -57,7 +57,7 @@ public class ChoosedLessonsController {
     }
 
     @GetMapping
-    public ResponseEntity<DataResult<List<ChoosedLesson>>> getAll(){
+    public ResponseEntity<DataResult<List<ChosenLesson>>> getAll(){
         DataResult result = choosedLessonService.getAll();
         if (result.isSuccess()) {
             return new ResponseEntity<>(result, HttpStatus.OK);

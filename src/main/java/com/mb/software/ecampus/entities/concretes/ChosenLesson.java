@@ -12,11 +12,11 @@ import java.util.Date;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "choosed_lessons")
-public class ChoosedLesson extends DbEntity {
+@Table(name = "chosen_lessons")
+public class ChosenLesson extends DbEntity {
 
     @Id
-    @Column(name = "choosed_lesson_id")
+    @Column(name = "chosen_lesson_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -28,9 +28,9 @@ public class ChoosedLesson extends DbEntity {
     @JoinColumn(name = "student_id")
     private Student student;
 
-    @Column(name = "choose_date")
-    private Date chooseDate;
+    @Column(name = "chosen_date")
+    private Date chosenDate;
 
-    @Column(name = "choose_type")
-    private String chooseType;
+    @Column(name = "chosen_type")
+    private String chosenType;
 }
