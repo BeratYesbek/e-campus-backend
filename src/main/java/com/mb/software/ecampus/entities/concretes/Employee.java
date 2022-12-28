@@ -42,7 +42,7 @@ public class Employee extends DbEntity {
     private User user;
 
     @Column(name = "salary")
-    private Long salary;
+    private float salary;
 
 
     /*@OneToMany(mappedBy = "employee")

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/academic_departments")
-public class AcademicDepartmentsController extends BaseController {
+public class AcademicDepartmentsController {
 
     private final AcademicDepartmentService academicDepartmentService;
 

@@ -29,6 +29,7 @@ public class UserOperationClaimServiceImpl implements UserOperationClaimService 
     }
 
     @Logging(logType = DbLogging.class)
+    @SecurityOperation(security = {SecurityRole.SUPER_ADMIN})
     @Override
     public DataResult<UserOperationClaim> add(UserOperationClaim entity) {
         return new SuccessDataResult<>(userOperationClaimDao.save(entity));

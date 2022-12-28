@@ -2,6 +2,7 @@ package com.mb.software.ecampus.core.entities;
 
 
 import com.mb.software.ecampus.core.entities.abstracts.DbEntity;
+import com.mb.software.ecampus.core.entities.enums.Gender;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,7 +44,7 @@ public class User extends DbEntity {
     private String phoneNumber;
 
     @Column(name = "gender")
-    private String gender;
+    private Gender gender;
 
     @Column(name = "address")
     private String address;

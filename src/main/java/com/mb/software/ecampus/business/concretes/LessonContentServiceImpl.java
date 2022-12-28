@@ -1,6 +1,10 @@
 package com.mb.software.ecampus.business.concretes;
 
 import com.mb.software.ecampus.business.abstracts.LessonContentService;
+import com.mb.software.ecampus.core.annotations.Logging;
+import com.mb.software.ecampus.core.annotations.SecurityOperation;
+import com.mb.software.ecampus.core.crossCuttingConcerns.logging.logServices.DbLogging;
+import com.mb.software.ecampus.core.security.roles.SecurityRole;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
@@ -24,27 +28,37 @@ public class LessonContentServiceImpl implements LessonContentService {
         this.lessonContentDao = lessonContentDao;
     }
 
+    @SecurityOperation(security = {SecurityRole.PROFESSOR})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<LessonContent> add(LessonContent entity) throws Exception {
         return new SuccessDataResult<>(lessonContentDao.save(entity));
     }
 
+    @SecurityOperation(security = {SecurityRole.PROFESSOR})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<LessonContent> update(LessonContent entity) {
         return new SuccessDataResult<>(lessonContentDao.save(entity));
     }
 
+    @SecurityOperation(security = {SecurityRole.PROFESSOR})
+    @Logging(logType = DbLogging.class)
     @Override
     public Result delete(int id) {
         lessonContentDao.deleteById(id);
         return new SuccessResult("Lesson Content has been deleted");
     }
 
+    @SecurityOperation(security = {SecurityRole.USER})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<LessonContent> getById(int id) {
         return new SuccessDataResult<>(lessonContentDao.findById(id).get());
     }
 
+    @SecurityOperation(security = {SecurityRole.USER})
+    @Logging(logType = DbLogging.class)
     @Override
     public DataResult<List<LessonContent>> getAll() {
         return new SuccessDataResult<>(lessonContentDao.findAll());
