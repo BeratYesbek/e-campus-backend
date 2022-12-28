@@ -1,6 +1,6 @@
 package com.mb.software.ecampus.api.controllers;
 
-import com.mb.software.ecampus.business.abstracts.ChoosedLessonService;
+import com.mb.software.ecampus.business.abstracts.ChosenLessonService;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.data.DataResult;
 import com.mb.software.ecampus.entities.concretes.ChosenLesson;
@@ -12,11 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/choosed_lessons")
-public class ChoosedLessonsController {
+public class ChosenLessonsController {
 
-    private final ChoosedLessonService choosedLessonService;
+    private final ChosenLessonService choosedLessonService;
 
-    public ChoosedLessonsController(ChoosedLessonService choosedLessonService) {
+    public ChosenLessonsController(ChosenLessonService choosedLessonService) {
         this.choosedLessonService = choosedLessonService;
     }
 

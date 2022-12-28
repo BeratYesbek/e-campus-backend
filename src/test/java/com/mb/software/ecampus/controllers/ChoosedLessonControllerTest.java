@@ -1,9 +1,9 @@
 package com.mb.software.ecampus.controllers;
-import com.mb.software.ecampus.api.controllers.ChoosedLessonsController;
+import com.mb.software.ecampus.api.controllers.ChosenLessonsController;
 
 import static org.mockito.Mockito.*;
 
-import com.mb.software.ecampus.business.abstracts.ChoosedLessonService;
+import com.mb.software.ecampus.business.abstracts.ChosenLessonService;
 import com.mb.software.ecampus.core.entities.User;
 import com.mb.software.ecampus.core.utilities.results.Result;
 import com.mb.software.ecampus.core.utilities.results.SuccessResult;
@@ -29,7 +29,7 @@ public class ChoosedLessonControllerTest {
 
 
     @Mock
-    private ChoosedLessonService choosedLessonService;
+    private ChosenLessonService choosedLessonService;
 
     static Lesson lesson = new Lesson(1,
             new AcademicPersonal(1, AcademicRate.PROFESSOR,
@@ -53,7 +53,7 @@ public class ChoosedLessonControllerTest {
     static ChosenLesson choosedLesson1 = new ChosenLesson(0,lesson,student, null,"");
 
     @InjectMocks
-    private ChoosedLessonsController choosedLessonsController;
+    private ChosenLessonsController choosedLessonsController;
 
     @Test
     public void testGetAllMethodIsWorkingProperly() {
